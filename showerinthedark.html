@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shower in the Dark</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050505;
+            background-image: url("image_8df295.png");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .magazine-layout {
+            display: flex;
+            flex: 1;
+            padding: 6vw;
+            box-sizing: border-box;
+            flex-wrap: wrap;
+        }
+        .left-column {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 4vh;
+        }
+        .right-column {
+            width: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 50px;
+            padding: 40px;
+        }
+        h1 {
+            font-family: 'Jost', sans-serif;
+            font-size: clamp(4rem, 8vw, 6.5rem);
+            margin: 0;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            line-height: 1.1;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.9);
+        }
+        .benefit-title {
+            font-family: 'Jost', sans-serif;
+            color: #D4AF37;
+            font-size: 1.3rem;
+            margin: 0 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 400;
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.9);
+        }
+        .benefit-desc {
+            color: #e0e0e0;
+            line-height: 1.8;
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.9);
+        }
+        .bottom-bar {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .x-button {
+            display: inline-block;
+            background: #ffffff;
+            color: #000000;
+            text-decoration: none;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .x-button:hover {
+            background: #D4AF37;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+        .today-button {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            border: 0.5px solid rgba(255,255,255,0.25);
+            padding: 14px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: all 0.4s ease;
+            z-index: 10;
+            background: rgba(0,0,0,0.15);
+            backdrop-filter: blur(5px);
+        }
+        .today-button:hover {
+            border: 0.5px solid rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.1);
+        }
+        .today-small {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+        .today-large {
+            font-family: 'Jost', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+    <div class="magazine-layout">
+        <div class="left-column">
+            <h1>Shower<br>in the<br>Dark</h1>
+        </div>
+        <div class="right-column">
+            <div>
+                <h3 class="benefit-title">Improved Sleep Quality</h3>
+                <p class="benefit-desc">Dimming the lights signals your brain to wind down and aligns with natural circadian rhythms. This low light environment enhances the release of melatonin, which is essential for deep and restful sleep.</p>
+            </div>
+            <div>
+                <h3 class="benefit-title">Stress Reduction</h3>
+                <p class="benefit-desc">A dark and soothing atmosphere allows for mental decompression. Stripping away intense visual stimulation reduces pre-sleep racing thoughts and anxiety, creating a perfect space for daily mindfulness and relaxation.</p>
+            </div>
+            <div>
+                <h3 class="benefit-title">Enhanced Relaxation</h3>
+                <p class="benefit-desc">Warm water naturally raises your body temperature, and the cooling process afterward induces drowsiness. Without bright lights keeping your nervous system alert, your body easily transitions into a restful state.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-bar">
+        <a href="https://x.com/aakashgupta/status/2037772179526615224" class="x-button" target="_blank">Discover More Benefits on X</a>
+    </div>
+    
+    <a href="https://www.today.com/health/sleep/dark-showering-rcna257401" class="today-button" target="_blank">
+        <span class="today-small">Read more at</span>
+        <span class="today-large">today.com</span>
+    </a>
+</body>
+</html>
