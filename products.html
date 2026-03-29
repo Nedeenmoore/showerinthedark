@@ -8,7 +8,12 @@
         @import url(https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400&display=swap);
         
         * {
-            box-sizing: border-box; /* Fixes the "shifting right" issue on Android/iPhone */
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 120px;
         }
 
         body {
@@ -21,7 +26,7 @@
             background-attachment: fixed;
             color: #ffffff;
             font-family: Inter, sans-serif;
-            overflow-x: hidden; /* Prevents side-scrolling on mobile */
+            overflow-x: hidden;
         }
 
         .header {
@@ -61,7 +66,7 @@
             flex-wrap: wrap;
             gap: 30px;
             padding: 20px;
-            justify-content: center; /* Ensures cards stay centered */
+            justify-content: center;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -69,15 +74,21 @@
         .product-card {
             background: rgba(0,0,0,0.7);
             backdrop-filter: blur(10px);
-            border: 0.5px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 8px;
             padding: 25px;
             width: 100%;
-            max-width: 340px; /* Flexible width for mobile screens */
+            max-width: 340px;
             display: flex;
             flex-direction: column;
             gap: 15px;
-            transition: transform 0.3s ease;
+            transition: all 0.5s ease;
+        }
+        
+        .product-card:target {
+            border-color: #D4AF37;
+            box-shadow: 0 0 25px rgba(212,175,55,0.3);
+            transform: translateY(-5px);
         }
 
         .category {
@@ -125,7 +136,7 @@
             position: absolute;
             top: 25px;
             left: 50%;
-            transform: translateX(-50%); /* Centers the back button on mobile */
+            transform: translateX(-50%);
             color: #fff;
             text-decoration: none;
             font-size: 0.7rem;
@@ -135,6 +146,19 @@
             padding: 10px 20px;
             border-radius: 4px;
             white-space: nowrap;
+        }
+
+        .medical-disclaimer {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            margin: 60px auto 40px auto;
+            max-width: 800px;
+            line-height: 1.6;
+            text-align: center;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         @media (min-width: 768px) {
@@ -156,54 +180,65 @@
     <div class=disclosure>As an Amazon Associate, I earn from qualifying purchases.</div>
     
     <div class=product-grid>
-        <div class=product-card>
+        <div id=showerlight class=product-card>
             <span class=category>Lighting</span>
             <h3 class=product-title>FULEN IP65 Shower Light 2-Pack</h3>
             <p class=product-desc>Dual-point red lighting for your shower. Set both to red and dim for a shadow-free, melatonin-safe environment.</p>
             <a href=https://amzn.to/4dftTc3 class=buy-button target=_blank>View Details</a>
         </div>
 
-        <div class=product-card>
+        <div id=steamer class=product-card>
             <span class=category>Aromatherapy</span>
             <h3 class=product-title>Solia Deep Sleep Steamers</h3>
             <p class=product-desc>High-concentration lavender essential oil tablets designed to dissolve in the steam of your dark shower.</p>
             <a href=https://amzn.to/4lXXCZj class=buy-button target=_blank>View Details</a>
         </div>
 
-        <div class=product-card>
+        <div id=bulb class=product-card>
             <span class=category>Sleep Science</span>
             <h3 class=product-title>SANSI 670nm Red Bulb</h3>
             <p class=product-desc>Standard base bulb with zero blue light. Replace your vanity bulbs to protect your circadian rhythm.</p>
             <a href=https://amzn.to/41125kb class=buy-button target=_blank>View Details</a>
         </div>
 
-        <div class=product-card>
+        <div id=nightlight class=product-card>
             <span class=category>Sleep Science</span>
             <h3 class=product-title>670nm Red Night Light</h3>
             <p class=product-desc>Motion-sensing navigation light using the specific wavelength that does not disrupt sleep cycles.</p>
             <a href=https://amzn.to/4dKp9eA class=buy-button target=_blank>View Details</a>
         </div>
         
-        <div class=product-card>
+        <div id=speaker class=product-card>
             <span class=category>Waterproof Audio</span>
             <h3 class=product-title>Bose SoundLink Flex</h3>
             <p class=product-desc>Fully waterproof. Hang it in the shower to play low-frequency binaural beats or healing piano tracks.</p>
             <a href=https://amzn.to/4t6jeEY class=buy-button target=_blank>View Details</a>
         </div>
 
-        <div class=product-card>
-            <span class=category>Aromatherapy</span>
-            <h3 class=product-title>Slumber Shower Steamers</h3>
-            <p class=product-desc>A secondary scent profile featuring menthol and lavender to clear the mind before sleep.</p>
-            <a href=https://amzn.to/4m0cWVp class=buy-button target=_blank>View Details</a>
-        </div>
-
-        <div class=product-card>
+        <div id=audio class=product-card>
             <span class=category>Soundscape</span>
             <h3 class=product-title>Sleep-Inducing Piano</h3>
             <p class=product-desc>The official auditory trigger for this routine. Alpha-wave compositions that regulate the nervous system.</p>
             <a href=https://open.spotify.com/track/4tcH47nreZp87I8K5RpxI7 class=buy-button target=_blank>Listen on Spotify</a>
         </div>
+
+        <div id=magnesium class=product-card>
+            <span class=category>Supplements</span>
+            <h3 class=product-title>Doctors Best Magnesium Glycinate</h3>
+            <p class=product-desc>High absorption chelated magnesium designed to relax the central nervous system without digestive disruption.</p>
+            <a href=https://amzn.to/3Ob34vj class=buy-button target=_blank>View Details</a>
+        </div>
+
+        <div id=cherry class=product-card>
+            <span class=category>Supplements</span>
+            <h3 class=product-title>Zazzee Tart Cherry Extract</h3>
+            <p class=product-desc>A potent ten-to-one Montmorency cherry extract that acts as a highly bioavailable catalyst for melatonin production.</p>
+            <a href=https://amzn.to/4s7Qb37 class=buy-button target=_blank>View Details</a>
+        </div>
+    </div>
+
+    <div class=medical-disclaimer>
+        * Disclaimer: The products and information provided are for educational and informational purposes only and do not constitute medical advice. Always consult with a qualified healthcare physician before adding new dietary supplements to your regimen.
     </div>
 </body>
 </html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content=width=device-width,initial-scale=1>
+    <title>The Protocol | Shower in the Dark</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400&display=swap);
+        
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background: #050505; 
+            background-image: url(image_8df295.PNG);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff; 
+            font-family: Inter, sans-serif; 
+            line-height: 1.7; 
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5,5,5,0.85);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .container { 
+            position: relative;
+            z-index: 10;
+            max-width: 750px; 
+            margin: 0 auto; 
+            padding: 100px 20px 60px 20px; 
+        }
+
+        h1 { 
+            font-family: Jost, sans-serif; 
+            text-transform: uppercase; 
+            letter-spacing: 0.2em; 
+            text-align: center; 
+            color: #D4AF37; 
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .intro {
+            text-align: center;
+            color: #cccccc;
+            font-weight: 300;
+            margin-bottom: 80px;
+            font-size: 1.1rem;
+        }
+
+        .step { 
+            margin-bottom: 70px; 
+            position: relative; 
+            padding-left: 80px; 
+        }
+
+        .step-num { 
+            position: absolute; 
+            left: 0; 
+            top: -5px; 
+            font-family: Jost, sans-serif; 
+            font-size: 3rem; 
+            color: rgba(212,175,55,0.25); 
+            font-weight: 500; 
+            line-height: 1;
+        }
+
+        h2 { 
+            font-family: Jost, sans-serif; 
+            font-size: 1.3rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em; 
+            margin: 0 0 15px 0; 
+            color: #ffffff;
+        }
+
+        p { 
+            font-weight: 300; 
+            color: #bbbbbb; 
+            font-size: 1.05rem;
+            margin: 0;
+        }
+
+        .highlight {
+            color: #D4AF37;
+            font-weight: 400;
+            text-decoration: none;
+            border-bottom: 1px dotted #D4AF37;
+            transition: all 0.3s ease;
+        }
+        
+        .highlight:hover {
+            background: rgba(212,175,55,0.1);
+            border-bottom: 1px solid #D4AF37;
+        }
+
+        .back-nav { 
+            position: fixed; 
+            top: 30px; 
+            left: 30px; 
+            color: #ffffff; 
+            text-decoration: none; 
+            font-family: Inter, sans-serif;
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.15em;
+            border: 1px solid rgba(255,255,255,0.3); 
+            padding: 12px 24px; 
+            border-radius: 4px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            z-index: 100; 
+            transition: all 0.3s ease;
+        }
+
+        .back-nav:hover {
+            background: #ffffff;
+            color: #050505;
+        }
+
+        .cta-footer {
+            text-align: center; 
+            padding-top: 20px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid #D4AF37;
+            color: #D4AF37; 
+            text-decoration: none; 
+            text-transform: uppercase; 
+            letter-spacing: 0.15em;
+            padding: 18px 40px;
+            border-radius: 4px;
+            font-family: Jost, sans-serif;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            background: rgba(212,175,55,0.1);
+            transform: translateY(-3px);
+        }
+        
+        .disclaimer-section {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            line-height: 1.6;
+            text-align: left;
+        }
+        
+        .disclaimer-section p {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .step { padding-left: 0; padding-top: 60px; }
+            .step-num { top: 0; left: 0; font-size: 2.5rem; }
+            .back-nav { top: 20px; left: 50%; transform: translateX(-50%); }
+        }
+    </style>
+</head>
+<body>
+    <div class=overlay></div>
+    <a href=index.html class=back-nav>Return Home</a>
+    
+    <div class=container>
+        <h1>The Protocol</h1>
+        <p class=intro>Mastering your sleep requires more than a single habit. It demands a holistic alignment of your evening environment and your morning biology. Follow these eight steps to engineer the perfect circadian reset.</p>
+        
+        <div class=step>
+            <span class=step-num>01</span>
+            <h2>The Blackout</h2>
+            <p>Ninety minutes before bed, disable all overhead white lights. Switch your bathroom vanity to the <a href=products.html#bulb class=highlight>670nm Red Bulb</a> and set your <a href=products.html#nightlight class=highlight>shower navigation lighting</a> to a dim red hue. This signals to your master clock that dusk has arrived.</p>
+        </div>
+
+        <div class=step>
+            <span class=step-num>02</span>
+            <h2>The Sensory Prep</h2>
+            <p>When you are ready for sleep, start a warm flow of water in your darkened shower and place a <a href=products.html#steamer class=highlight>lavender steamer</a> on the shower floor out of the direct stream. Activate your <a href=products.html#speaker class=highlight>waterproof speaker</a> with a <a href=products.html#audio class=highlight>sleep-inducing piano track</a> or binaural frequencies. Allow the steam to build and fill the space with essential oils.</p>
+        </div>
+
+        <div class=step>
+            <span class=step-num>03</span>
+            <h2>The Transition</h2>
+            <p>Gently brush your teeth while the bathroom warms and the oils saturate the air. Using this transition time allows your senses to adapt to the low-light environment and begin the mental shift away from the demands of the day.</p>
+        </div>
+
+        <div class=step>
+            <span class=step-num>04</span>
+            <h2>The Supplement Stack*</h2>
+            <p>Prior to entering the shower, consider your nutritional support. Experts at the <a href=https://health.clevelandclinic.org/sleepy-girl-mocktail class=highlight target=_blank>Cleveland Clinic</a> recommend <a href=products.html#magnesium class=highlight>magnesium glycinate</a> as a primary choice for relaxing the central nervous system. When combined with <a href=products.html#cherry class=highlight>tart cherry</a>, a fruit clinically recognized for its high concentrations of natural melatonin, this stack acts as a powerful catalyst for your circadian transition.</p>
+        </div>
+
+        <div class=step>
+            <span class=step-num>05</span>
+            <h2>The Deep Reset</h2>
+            <p>Enter the dark, warm water. Close your eyes and practice deep, rhythmic breathing. Gently hum along to the low-frequency audio tracks. This physical vibration in your throat stimulates the vagus nerve, rapidly forcing your body into a parasympathetic state of deep relaxation.</p>
+        </div>
+
+        <div class=step>
+            <span class=step-num>06</span>
+            <h2>The Final Transition</h2>
+            <p>As you step out of the shower, the rapid evaporation of moisture naturally cools your body, which serves as a biological cue for sleep. Transition to your bedroom, lit only by circadian rhythm friendly red light and ideally kept a bit cooler than the rest of your home to further aid your sleep cycle. As you settle into bed and turn off the red light, your room should be in total darkness. As you drift off to sleep, actively intercept any intrusive thoughts regarding the day's work or unresolved problems by telling yourself you will address those issues over your morning coffee. Permit your mind to shut down.</p>
+        </div>
+
+        <div class=step>
+            <span class=step-num>07</span>
+            <h2>The Morning Anchor</h2>
+            <p>Wake at the exact same time daily, allowing a maximum variance of only one hour on weekends. Immediately expose your eyes to bright, natural daylight. Brush your teeth and wait a minimum of twenty minutes before consuming caffeine, allowing your natural morning cortisol spike to clear. Pair your morning beverage with a large spoonful of unsweetened Greek yogurt; a healthy gut microbiome is fundamentally linked to robust circadian regulation.</p>
+        </div>
+
+        <div class=step>
+            <span class=step-num>08</span>
+            <h2>The Caffeine Curfew</h2>
+            <p>Limit yourself to at most one additional cup of coffee, strictly consumed before ten in the morning. If you require a warm beverage later in the day, transition exclusively to decaffeinated options or tea. After dinner, restrict all intake to zero-caffeine herbal infusions.</p>
+        </div>
+
+        <div class=cta-footer>
+            <a href=products.html class=cta-button>Equip Your Routine</a>
+        </div>
+        
+        <div class=disclaimer-section>
+            <p>* Safety Notice: For the human circadian cycle, 670nm red light <a href=science.html class=highlight>acts as the biological equivalent of near-total darkness</a> because it does not trigger the eye receptors that suppress melatonin. Therefore, while a dimly lit room may enhance psychological relaxation, there is absolutely no need to dim your red lights beyond the level of illumination necessary to ensure complete physical safety as you navigate your bathroom and bedroom.</p>
+            <p>* Medical Disclaimer: The information provided regarding supplements and health routines is for educational and informational purposes only and does not constitute medical advice. Always consult with a qualified healthcare physician before adding new dietary supplements.</p>
+        </div>
+    </div>
+</body>
+</html>

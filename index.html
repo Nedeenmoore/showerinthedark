@@ -3,11 +3,11 @@
 <head>
     <meta charset=UTF-8>
     <meta name=viewport content=width=device-width,initial-scale=1>
-    <title>Shower in the Dark | Master Your Sleep</title>
+    <title>Shower in the Dark</title>
+    <link rel=icon type=image/png href=favicon.png>
     <style>
         @import url(https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400&display=swap);
         
-        /* Fallback background color ensures page is never blank */
         body {
             margin: 0;
             padding: 0;
@@ -64,17 +64,29 @@
             margin-top: 20px;
         }
 
-        .cta-container {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 50px;
+        .description {
+            max-width: 650px;
+            margin: 40px auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #cccccc;
         }
 
-        .cta-button {
+        .cta-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+            z-index: 20;
+            position: relative;
+            gap: 10px;
+        }
+
+        .btn-secondary {
             display: inline-block;
-            padding: 18px 40px;
+            padding: 18px 30px;
             text-decoration: none;
             font-family: Jost, sans-serif;
             text-transform: uppercase;
@@ -82,22 +94,77 @@
             font-size: 0.8rem;
             border-radius: 4px;
             min-width: 200px;
-            transition: 0.3s;
+            transition: 0.4s ease;
+            background-color: transparent;
+            color: #D4AF37;
+            border: 1px solid #D4AF37;
+            box-sizing: border-box;
         }
 
-        .primary { background: #ffffff; color: #050505; }
-        .secondary { border: 1px solid #D4AF37; color: #D4AF37; }
+        .btn-secondary:hover {
+            background: rgba(212,175,55,0.1);
+            transform: translateY(-5px);
+        }
+
+        .btn-highlight {
+            display: inline-block;
+            padding: 20px 45px;
+            text-decoration: none;
+            font-family: Jost, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            min-width: 280px;
+            transition: 0.4s ease;
+            background-color: rgba(212, 175, 55, 0.08);
+            color: #D4AF37;
+            border: 1px solid #D4AF37;
+            box-sizing: border-box;
+        }
+
+        .btn-highlight:hover {
+            background: rgba(212, 175, 55, 0.18);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
+        }
+
+        footer {
+            position: relative;
+            z-index: 5;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #666666;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .btn-highlight {
+                order: -1;
+                margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class=overlay></div>
+
     <div class=content>
         <h1>Shower in the Dark</h1>
-        <div class=tagline>Protect Your Melatonin</div>
+        <div class=tagline>Protect Your Master Clock</div>
+        
+        <p class=description>
+            Modern lighting sends a midday signal to your brain at midnight. Reclaim your biological rhythm by eliminating blue light and embracing the restorative power of a dark evening routine.
+        </p>
+
         <div class=cta-container>
-            <a href=products.html class="cta-button primary">Shop Collection</a>
-            <a href=science.html class="cta-button secondary">Explore Science</a>
+            <a href=science.html class=btn-secondary>The Science</a>
+            <a href=guide.html class=btn-highlight>Enter the Protocol</a>
+            <a href=products.html class=btn-secondary>Shop Essentials</a>
         </div>
     </div>
+
+    <footer>Est. 2026 | Curated Sleep Engineering</footer>
 </body>
 </html>
