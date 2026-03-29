@@ -21,7 +21,7 @@
             min-height: 100vh;
         }
         .header {
-            padding: 6vw;
+            padding: 6vw 6vw 2vw 6vw;
             text-align: center;
             margin-top: 40px;
         }
@@ -43,12 +43,22 @@
             margin-top: 15px;
             text-shadow: 1px 1px 10px rgba(0,0,0,0.9);
         }
+        .disclosure {
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
         .product-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 40px;
             padding: 0 6vw 6vw 6vw;
             justify-content: center;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         .product-card {
             background: rgba(0,0,0,0.65);
@@ -104,6 +114,7 @@
             transition: all 0.3s ease;
             margin-top: 10px;
             background: rgba(255,255,255,0.05);
+            width: 100%;
         }
         .buy-button:hover {
             background: #D4AF37;
@@ -143,40 +154,56 @@
         <div class=subtitle>Curated Essentials for Deep Relaxation</div>
     </div>
     
+    <div class=disclosure>As an Amazon Associate, I earn from qualifying purchases.</div>
+    
     <div class=product-grid>
         <div class=product-card>
-            <span class=category>Circadian Lighting</span>
-            <h3 class=product-title>DreamWalkerz Red Nightlight</h3>
-            <p class=product-desc>A motion-sensing navigational light utilizing a strictly blue-light-free red spectrum to provide safe bathroom visibility without triggering cortisol release.</p>
-            <a href=# class=buy-button>View Details</a>
+            <span class=category>Sleep-Specific Lighting</span>
+            <h3 class=product-title>FULEN IP65 Shower Light 2-Pack</h3>
+            <p class=product-desc>The optimal shower solution. Set both units to red and dim them to your comfort level. Two low-intensity red lights create a superior, shadow-free melatonin environment.</p>
+            <a href=https://amzn.to/4dftTc3 class=buy-button target=_blank>View Details</a>
         </div>
-        
-        <div class=product-card>
-            <span class=category>Circadian Lighting</span>
-            <h3 class=product-title>Amber Submersible LED</h3>
-            <p class=product-desc>A fully waterproof, battery-operated ambient glow light designed for inside the shower, serving as a much safer and highly soothing alternative to open-flame candles.</p>
-            <a href=# class=buy-button>View Details</a>
-        </div>
-        
+
         <div class=product-card>
             <span class=category>Aromatherapy</span>
-            <h3 class=product-title>Lavande Luxury Steamers</h3>
-            <p class=product-desc>An opulent, slow-dissolving blend of lavender and sandalwood designed to accelerate relaxation and turn a simple daily routine into an immersive luxury spa experience.</p>
-            <a href=# class=buy-button>View Details</a>
+            <h3 class=product-title>Solia Deep Sleep Shower Steamers</h3>
+            <p class=product-desc>Patent-pending aromatherapy tablets infused with real lavender essential oils. Specifically formulated to trigger deep relaxation through the power of steam.</p>
+            <a href=https://amzn.to/4lXXCZj class=buy-button target=_blank>View Details</a>
         </div>
-        
+
         <div class=product-card>
-            <span class=category>Aromatherapy</span>
-            <h3 class=product-title>Slumber Shower Steamers</h3>
-            <p class=product-desc>A meticulously crafted combination of organic lavender and menthol vapors intended to gently open your airways and calm your nervous system right before sleep.</p>
-            <a href=# class=buy-button>View Details</a>
+            <span class=category>Sleep Science</span>
+            <h3 class=product-title>SANSI 670nm Red Light Bulb</h3>
+            <p class=product-desc>A standard E26 replacement bulb featuring zero blue light. Ideal for permanent vanity or overhead fixtures to maintain melatonin levels during your night routine.</p>
+            <a href=https://amzn.to/41125kb class=buy-button target=_blank>View Details</a>
+        </div>
+
+        <div class=product-card>
+            <span class=category>Sleep Science</span>
+            <h3 class=product-title>670nm Pure Red Night Light</h3>
+            <p class=product-desc>A dimmable, 360-degree beacon utilizing a specific 670nm wavelength. Designed to provide safe navigation without any impact on melatonin production.</p>
+            <a href=https://amzn.to/4dKp9eA class=buy-button target=_blank>View Details</a>
         </div>
         
         <div class=product-card>
             <span class=category>Waterproof Audio</span>
             <h3 class=product-title>Bose SoundLink Flex</h3>
-            <p class=product-desc>A rugged, fully waterproof and dustproof speaker that hangs easily in the bathroom, delivering deep, rich sound for ambient soundscapes or guided meditations.</p>
-            <a href=# class=buy-button>View Details</a>
+            <p class=product-desc>For the ultimate experience, hang this rugged speaker inside the shower. Play healing alpha-wave frequencies to pair a rich soundstage with your red-light routine.</p>
+            <a href=https://amzn.to/4t6jeEY class=buy-button target=_blank>View Details</a>
+        </div>
+
+        <div class=product-card>
+            <span class=category>Aromatherapy</span>
+            <h3 class=product-title>Slumber Shower Steamers</h3>
+            <p class=product-desc>A meticulously crafted combination of organic lavender and menthol vapors intended to gently open your airways and calm your nervous system right before sleep.</p>
+            <a href=https://amzn.to/4m0cWVp class=buy-button target=_blank>View Details</a>
+        </div>
+
+        <div class=product-card>
+            <span class=category>Soundscape</span>
+            <h3 class=product-title>Spotify: Sleep-Inducing Piano</h3>
+            <p class=product-desc>The official induction soundtrack. Healing alpha-wave piano compositions designed to regulate the nervous system and prepare the mind for profound rest.</p>
+            <a href=https://open.spotify.com/track/2jhOCemiyRYioLMEl3UkRg class=buy-button target=_blank>View Details</a>
         </div>
     </div>
 </body>

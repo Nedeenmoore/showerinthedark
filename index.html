@@ -3,9 +3,10 @@
 <head>
     <meta charset=UTF-8>
     <meta name=viewport content=width=device-width,initial-scale=1>
-    <title>Shower in the Dark</title>
+    <title>Shower in the Dark | Master Your Sleep</title>
     <style>
         @import url(https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400&display=swap);
+        
         body {
             margin: 0;
             padding: 0;
@@ -18,135 +19,138 @@
             font-family: Inter, sans-serif;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
-        }
-        .magazine-layout {
-            display: flex;
-            flex: 1;
-            padding: 3vw 1vw 6vw 6vw;
-            box-sizing: border-box;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .left-column {
-            flex: 1;
-            min-width: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-        .right-column {
-            width: 450px;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
-            gap: 50px;
-            padding: 40px;
-            margin-left: 192px;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow-x: hidden;
         }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            padding: 20px;
+            max-width: 900px;
+            width: 90%;
+        }
+
         h1 {
             font-family: Jost, sans-serif;
-            font-size: clamp(4rem,8vw,6.5rem);
-            margin: 0;
+            font-size: clamp(3rem, 10vw, 5.5rem);
             font-weight: 300;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
+            margin: 0;
             line-height: 1.1;
-            text-shadow: 2px 2px 20px rgba(0,0,0,0.9);
         }
-        .benefit-title {
+
+        .tagline {
             font-family: Jost, sans-serif;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
             color: #D4AF37;
-            font-size: 1.3rem;
-            margin: 0 0 12px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
+            margin-top: 25px;
             font-weight: 400;
-            text-shadow: 1px 1px 10px rgba(0,0,0,0.9);
         }
-        .benefit-desc {
-            color: #e0e0e0;
-            line-height: 1.8;
-            margin: 0;
-            font-size: 1.05rem;
-            font-weight: 300;
-            text-shadow: 1px 1px 10px rgba(0,0,0,0.9);
-        }
-        .fixed-buttons {
-            position: fixed;
-            bottom: 40px;
-            left: 40px;
-            display: flex;
-            gap: 24px;
-            z-index: 10;
-        }
-        .small-button {
-            border: 0.5px solid rgba(255,255,255,0.25);
-            padding: 14px 24px;
-            border-radius: 4px;
-            text-decoration: none;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            transition: all 0.4s ease;
-            background: rgba(0,0,0,0.15);
-            backdrop-filter: blur(5px);
-        }
-        .small-button:hover {
-            border: 0.5px solid rgba(255,255,255,0.8);
-            background: rgba(255,255,255,0.1);
-        }
-        .small-text {
-            font-family: Inter, sans-serif;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            opacity: 0.8;
-            font-weight: 300;
-        }
-        .large-text {
-            font-family: Jost, sans-serif;
+
+        .description {
+            max-width: 650px;
+            margin: 40px auto;
             font-size: 1.1rem;
-            font-weight: 400;
-            letter-spacing: 0.05em;
+            line-height: 1.8;
+            font-weight: 300;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 60px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 45px;
+            text-decoration: none;
+            font-family: Jost, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            min-width: 240px;
+            box-sizing: border-box;
+        }
+
+        .primary-btn {
+            background-color: #ffffff;
+            color: #050505;
+            border: 1px solid #ffffff;
+        }
+
+        .primary-btn:hover {
+            background-color: #D4AF37;
+            border-color: #D4AF37;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        .secondary-btn {
+            border: 1px solid #D4AF37;
+            color: #D4AF37;
+            background: transparent;
+        }
+
+        .secondary-btn:hover {
+            background: rgba(212, 175, 55, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        footer {
+            position: absolute;
+            bottom: 40px;
+            z-index: 5;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
         }
     </style>
 </head>
 <body>
-    <div class=magazine-layout>
-        <div class=left-column>
-            <h1>Shower<br>in the<br>Dark</h1>
-        </div>
-        <div class=right-column>
-            <div>
-                <h3 class=benefit-title>Maximum Melatonin Release</h3>
-                <p class=benefit-desc>Bright bathroom lighting can suppress melatonin production by up to seventy percent. Dimming the lights aligns your circadian rhythm, signaling to your brain that it is time to transition into deep, restorative sleep.</p>
-            </div>
-            <div>
-                <h3 class=benefit-title>Nervous System Reset</h3>
-                <p class=benefit-desc>Removing harsh visual stimuli lowers cortisol levels and increases heart rate variability. When paired with the sound of running water, darkness shifts your body from a state of fight-or-flight into a calm, parasympathetic mode.</p>
-            </div>
-            <div>
-                <h3 class=benefit-title>Biological Temperature Drop</h3>
-                <p class=benefit-desc>A warm shower heightens your remaining senses, turning the routine into a grounding mindfulness practice. Stepping out afterward causes a rapid drop in core body temperature, biologically mimicking the natural trigger for sleep onset.</p>
-            </div>
+    <div class=overlay></div>
+
+    <div class=content>
+        <h1>Shower in the Dark</h1>
+        <div class=tagline>The Ultimate Night Routine</div>
+        
+        <p class=description>
+            Standard lighting disrupts your biological clock. Reclaim your evening with a zero-blue-light routine designed to maximize melatonin and trigger profound relaxation.
+        </p>
+
+        <div class=cta-container>
+            <a href=products.html class="cta-button primary-btn">Shop the Collection</a>
+            <a href=science.html class="cta-button secondary-btn">Explore the Science</a>
         </div>
     </div>
-    
-    <div class=fixed-buttons>
-        <a href=https://www.today.com/health/sleep/dark-showering-rcna257401 class=small-button target=_blank>
-            <span class=small-text>Read more at</span>
-            <span class=large-text>today.com</span>
-        </a>
-        <a href=https://x.com/aakashgupta/status/2037772179526615224 class=small-button target=_blank>
-            <span class=small-text>Read more at</span>
-            <span class=large-text>X</span>
-        </a>
-        <a href=products.html class=small-button>
-            <span class=small-text>Shop Essentials</span>
-            <span class=large-text>Enhance your experience</span>
-        </a>
-    </div>
+
+    <footer>Est. 2026 | Curated Sleep Engineering</footer>
 </body>
 </html>
