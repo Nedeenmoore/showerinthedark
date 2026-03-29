@@ -6,143 +6,142 @@
     <title>Curated Products</title>
     <style>
         @import url(https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400&display=swap);
+        
+        * {
+            box-sizing: border-box; /* Fixes the "shifting right" issue on Android/iPhone */
+        }
+
         body {
             margin: 0;
             padding: 0;
             background-color: #050505;
-            background-image: url(image_8df295.png);
+            background-image: url(image_8df295.PNG);
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: #ffffff;
             font-family: Inter, sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            overflow-x: hidden; /* Prevents side-scrolling on mobile */
         }
+
         .header {
-            padding: 6vw 6vw 2vw 6vw;
+            padding: 80px 20px 20px 20px;
             text-align: center;
-            margin-top: 40px;
         }
+
         h1 {
             font-family: Jost, sans-serif;
-            font-size: clamp(3rem,6vw,4.5rem);
+            font-size: clamp(2.2rem, 6vw, 4rem);
             margin: 0;
             font-weight: 300;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            text-shadow: 2px 2px 20px rgba(0,0,0,0.9);
         }
+
         .subtitle {
             color: #D4AF37;
             font-family: Jost, sans-serif;
-            font-size: 1.2rem;
+            font-size: 1rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
             margin-top: 15px;
-            text-shadow: 1px 1px 10px rgba(0,0,0,0.9);
         }
+
         .disclosure {
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: rgba(255,255,255,0.5);
-            margin-bottom: 40px;
-            font-weight: 300;
-            letter-spacing: 0.05em;
+            margin: 20px auto 40px auto;
+            max-width: 80%;
+            line-height: 1.4;
         }
+
         .product-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px;
-            padding: 0 6vw 6vw 6vw;
-            justify-content: center;
-            max-width: 1400px;
+            gap: 30px;
+            padding: 20px;
+            justify-content: center; /* Ensures cards stay centered */
+            max-width: 1200px;
             margin: 0 auto;
         }
+
         .product-card {
-            background: rgba(0,0,0,0.65);
+            background: rgba(0,0,0,0.7);
             backdrop-filter: blur(10px);
             border: 0.5px solid rgba(255,255,255,0.1);
             border-radius: 8px;
-            padding: 30px;
-            width: 320px;
+            padding: 25px;
+            width: 100%;
+            max-width: 340px; /* Flexible width for mobile screens */
             display: flex;
             flex-direction: column;
             gap: 15px;
-            transition: all 0.4s ease;
+            transition: transform 0.3s ease;
         }
-        .product-card:hover {
-            border: 0.5px solid rgba(212,175,55,0.5);
-            transform: translateY(-5px);
-            background: rgba(0,0,0,0.8);
-        }
+
         .category {
             color: #D4AF37;
-            font-family: Inter, sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.15em;
         }
+
         .product-title {
             font-family: Jost, sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 400;
-            line-height: 1.4;
             margin: 0;
         }
+
         .product-desc {
-            color: #e0e0e0;
-            font-size: 0.95rem;
+            color: #ccc;
+            font-size: 0.9rem;
             line-height: 1.6;
-            margin: 0;
             flex-grow: 1;
-            font-weight: 300;
         }
+
         .buy-button {
-            display: inline-block;
-            border: 0.5px solid rgba(255,255,255,0.3);
+            display: block;
+            border: 1px solid rgba(255,255,255,0.3);
             color: #ffffff;
             text-decoration: none;
-            padding: 12px 0;
+            padding: 15px 0;
             text-align: center;
             border-radius: 4px;
             font-family: Jost, sans-serif;
             text-transform: uppercase;
+            font-size: 0.8rem;
             letter-spacing: 0.1em;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            margin-top: 10px;
             background: rgba(255,255,255,0.05);
-            width: 100%;
         }
+
         .buy-button:hover {
             background: #D4AF37;
-            border-color: #D4AF37;
-            color: #050505;
-            font-weight: 500;
+            color: #000;
         }
+
         .back-button {
-            position: fixed;
-            top: 40px;
-            left: 40px;
-            color: #ffffff;
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%); /* Centers the back button on mobile */
+            color: #fff;
             text-decoration: none;
-            font-family: Inter, sans-serif;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            font-size: 0.75rem;
-            border: 0.5px solid rgba(255,255,255,0.25);
-            padding: 12px 24px;
+            letter-spacing: 0.1em;
+            border: 0.5px solid rgba(255,255,255,0.3);
+            padding: 10px 20px;
             border-radius: 4px;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            z-index: 20;
+            white-space: nowrap;
         }
-        .back-button:hover {
-            border-color: rgba(255,255,255,0.8);
-            background: rgba(255,255,255,0.1);
+
+        @media (min-width: 768px) {
+            .back-button {
+                left: 40px;
+                transform: none;
+            }
         }
     </style>
 </head>
@@ -150,60 +149,60 @@
     <a href=index.html class=back-button>Return to Home</a>
     
     <div class=header>
-        <h1>Enhance Your Routine</h1>
-        <div class=subtitle>Curated Essentials for Deep Relaxation</div>
+        <h1>The Essentials</h1>
+        <div class=subtitle>Curated for the Dark</div>
     </div>
     
     <div class=disclosure>As an Amazon Associate, I earn from qualifying purchases.</div>
     
     <div class=product-grid>
         <div class=product-card>
-            <span class=category>Sleep-Specific Lighting</span>
+            <span class=category>Lighting</span>
             <h3 class=product-title>FULEN IP65 Shower Light 2-Pack</h3>
-            <p class=product-desc>The optimal shower solution. Set both units to red and dim them to your comfort level. Two low-intensity red lights create a superior, shadow-free melatonin environment.</p>
+            <p class=product-desc>Dual-point red lighting for your shower. Set both to red and dim for a shadow-free, melatonin-safe environment.</p>
             <a href=https://amzn.to/4dftTc3 class=buy-button target=_blank>View Details</a>
         </div>
 
         <div class=product-card>
             <span class=category>Aromatherapy</span>
-            <h3 class=product-title>Solia Deep Sleep Shower Steamers</h3>
-            <p class=product-desc>Patent-pending aromatherapy tablets infused with real lavender essential oils. Specifically formulated to trigger deep relaxation through the power of steam.</p>
+            <h3 class=product-title>Solia Deep Sleep Steamers</h3>
+            <p class=product-desc>High-concentration lavender essential oil tablets designed to dissolve in the steam of your dark shower.</p>
             <a href=https://amzn.to/4lXXCZj class=buy-button target=_blank>View Details</a>
         </div>
 
         <div class=product-card>
             <span class=category>Sleep Science</span>
-            <h3 class=product-title>SANSI 670nm Red Light Bulb</h3>
-            <p class=product-desc>A standard E26 replacement bulb featuring zero blue light. Ideal for permanent vanity or overhead fixtures to maintain melatonin levels during your night routine.</p>
+            <h3 class=product-title>SANSI 670nm Red Bulb</h3>
+            <p class=product-desc>Standard base bulb with zero blue light. Replace your vanity bulbs to protect your circadian rhythm.</p>
             <a href=https://amzn.to/41125kb class=buy-button target=_blank>View Details</a>
         </div>
 
         <div class=product-card>
             <span class=category>Sleep Science</span>
-            <h3 class=product-title>670nm Pure Red Night Light</h3>
-            <p class=product-desc>A dimmable, 360-degree beacon utilizing a specific 670nm wavelength. Designed to provide safe navigation without any impact on melatonin production.</p>
+            <h3 class=product-title>670nm Red Night Light</h3>
+            <p class=product-desc>Motion-sensing navigation light using the specific wavelength that does not disrupt sleep cycles.</p>
             <a href=https://amzn.to/4dKp9eA class=buy-button target=_blank>View Details</a>
         </div>
         
         <div class=product-card>
             <span class=category>Waterproof Audio</span>
             <h3 class=product-title>Bose SoundLink Flex</h3>
-            <p class=product-desc>For the ultimate experience, hang this rugged speaker inside the shower. Play healing alpha-wave frequencies to pair a rich soundstage with your red-light routine.</p>
+            <p class=product-desc>Fully waterproof. Hang it in the shower to play low-frequency binaural beats or healing piano tracks.</p>
             <a href=https://amzn.to/4t6jeEY class=buy-button target=_blank>View Details</a>
         </div>
 
         <div class=product-card>
             <span class=category>Aromatherapy</span>
             <h3 class=product-title>Slumber Shower Steamers</h3>
-            <p class=product-desc>A meticulously crafted combination of organic lavender and menthol vapors intended to gently open your airways and calm your nervous system right before sleep.</p>
+            <p class=product-desc>A secondary scent profile featuring menthol and lavender to clear the mind before sleep.</p>
             <a href=https://amzn.to/4m0cWVp class=buy-button target=_blank>View Details</a>
         </div>
 
         <div class=product-card>
             <span class=category>Soundscape</span>
-            <h3 class=product-title>Spotify: Sleep-Inducing Piano</h3>
-            <p class=product-desc>The official induction soundtrack. Healing alpha-wave piano compositions designed to regulate the nervous system and prepare the mind for profound rest.</p>
-            <a href=https://open.spotify.com/track/2jhOCemiyRYioLMEl3UkRg class=buy-button target=_blank>View Details</a>
+            <h3 class=product-title>Sleep-Inducing Piano</h3>
+            <p class=product-desc>The official auditory trigger for this routine. Alpha-wave compositions that regulate the nervous system.</p>
+            <a href=https://open.spotify.com/track/4tcH47nreZp87I8K5RpxI7 class=buy-button target=_blank>Listen on Spotify</a>
         </div>
     </div>
 </body>
