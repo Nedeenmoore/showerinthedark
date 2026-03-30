@@ -1,220 +1,176 @@
 <!DOCTYPE html>
-<html lang=en>
+<html lang="en">
 <head>
-    <meta charset=UTF-8>
-    <meta name=viewport content=width=device-width,initial-scale=1>
-    <title>The Science | Shower in the Dark</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Science of the Anchor | Circadian Architecture</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url(https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400&display=swap);
-        
+        :root {
+            --deep-bg: #050505;
+            --text-silver: #E0E0E0;
+            --accent-red: #B22222;
+            --accent-gold: #C5A059;
+            --font-serif: 'EB Garamond', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
         body { 
+            background: var(--deep-bg); 
+            color: var(--text-silver); 
+            font-family: var(--font-sans); 
             margin: 0; 
-            padding: 0; 
-            background-color: #050505; 
-            color: #ffffff; 
-            font-family: Inter, sans-serif; 
-            line-height: 1.8; 
-            overflow-x: hidden; 
+            line-height: 1.6; 
+            -webkit-font-smoothing: antialiased;
         }
         
-        .container { 
-            max-width: 850px; 
-            margin: 0 auto; 
-            padding: 120px 40px; 
+        .hero-banner { 
+            height: 40vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            background: linear-gradient(to bottom, rgba(5,5,5,0.2), var(--deep-bg)), url('image_8df295.PNG'); 
+            background-size: cover; 
+            background-position: center;
+            text-align: center;
         }
-        
-        h1, h2, h3 { 
-            font-family: Jost, sans-serif; 
-            text-transform: uppercase; 
-            letter-spacing: 0.15em; 
-            color: #D4AF37; 
+        h1 { font-family: var(--font-serif); font-size: 3.8rem; font-weight: 400; margin: 0; color: #FFF; }
+        .hero-sub { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 5px; color: var(--accent-gold); margin-bottom: 5px; }
+
+        .container { max-width: 1150px; margin: 0 auto; padding: 30px 5% 80px; }
+
+        .pillar-section { 
+            margin-bottom: 70px; 
+            display: grid; 
+            grid-template-columns: 1.2fr 1fr; 
+            gap: 50px; 
+            align-items: center; 
         }
+        .pillar-section.reverse { grid-template-columns: 1fr 1.2fr; }
         
-        h1 { 
-            font-size: 3rem; 
-            margin-bottom: 60px; 
-            text-align: center; 
-            font-weight: 300; 
-            line-height: 1.2; 
+        .content h2 { 
+            font-family: var(--font-serif); 
+            font-size: 2.5rem; 
+            color: var(--accent-gold); 
+            margin-bottom: 15px; 
+            line-height: 1.1;
         }
+        .content h2 small { display: block; font-size: 1rem; color: #555; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; font-family: var(--font-sans); font-weight: 400; }
+        .content p { font-size: 1.05rem; color: #BBB; margin-bottom: 15px; }
         
-        h2 { 
-            font-size: 1.6rem; 
-            margin-top: 100px; 
-            border-bottom: 1px solid rgba(212,175,55,0.3); 
-            padding-bottom: 15px; 
+        .sci-link { display: inline-block; margin-right: 12px; margin-bottom: 8px; color: #666; text-decoration: none; font-size: 0.75rem; border: 1px solid #222; padding: 3px 8px; transition: 0.3s; }
+        .sci-link:hover { color: var(--accent-gold); border-color: var(--accent-gold); }
+
+        .diagram-box { background: #080808; border: 1px solid #1a1a1a; padding: 20px; text-align: center; }
+        .diagram-box img { max-width: 100%; height: auto; display: block; margin: 0 auto; } 
+        .caption { font-size: 0.65rem; color: #444; text-transform: uppercase; margin-top: 12px; letter-spacing: 2px; font-weight: 700; }
+
+        /* Final Navigation Footer */
+        .footer-nav { 
+            margin-top: 60px; 
+            padding-top: 50px; 
+            border-top: 1px solid #1a1a1a; 
+            display: flex; 
+            justify-content: center; 
+            gap: 20px; 
         }
-        
-        h3 { 
-            font-size: 1.1rem; 
-            color: #ffffff; 
-            margin-top: 40px; 
-            letter-spacing: 0.1em; 
-        }
-        
-        p { 
-            font-weight: 300; 
-            color: #cccccc; 
-            margin-bottom: 30px; 
-            font-size: 1.1rem; 
-        }
-        
-        .highlight-box { 
-            background: rgba(212,175,55,0.05); 
-            border-left: 3px solid #D4AF37; 
-            padding: 30px; 
-            margin: 40px 0; 
-            border-radius: 0 8px 8px 0; 
-            font-style: italic; 
-            color: #e0e0e0; 
-        }
-        
-        .source-link { 
-            color: #D4AF37; 
+        .nav-btn { 
             text-decoration: none; 
-            font-size: 0.85rem; 
-            font-weight: 500; 
-            border-bottom: 1px solid transparent; 
-            transition: 0.3s; 
-            display: inline-block; 
-            margin-bottom: 20px; 
+            color: var(--text-silver); 
+            font-family: var(--font-sans); 
+            font-size: 0.8rem; 
             text-transform: uppercase; 
-            letter-spacing: 0.1em; 
-        }
-        
-        .source-link:hover { 
-            border-bottom: 1px solid #D4AF37; 
-        }
-        
-        .back-nav { 
-            position: fixed; 
-            top: 40px; 
-            left: 40px; 
-            color: #fff; 
-            text-decoration: none; 
-            font-size: 0.7rem; 
-            text-transform: uppercase; 
-            letter-spacing: 0.2em; 
-            border: 1px solid rgba(255,255,255,0.2); 
-            padding: 12px 24px; 
-            border-radius: 4px; 
-            background: rgba(0,0,0,0.5); 
-            backdrop-filter: blur(10px); 
-            z-index: 1000; 
-            transition: 0.3s; 
-        }
-        
-        .back-nav:hover { 
-            background: #ffffff; 
-            color: #000000; 
-        }
-        
-        .diagram-container { 
-            margin: 60px 0; 
-            text-align: center; 
-            background: rgba(255,255,255,0.02); 
-            padding: 20px; 
-            border-radius: 8px; 
-            border: 1px solid rgba(255,255,255,0.05); 
-        }
-        
-        .diagram-container img { 
-            max-width: 100%; 
-            height: auto; 
-            border-radius: 4px; 
-            opacity: 0.9; 
-        }
-        
-        .diagram-caption { 
-            font-size: 0.85rem; 
-            color: rgba(255,255,255,0.5); 
-            margin-top: 15px; 
-            letter-spacing: 0.05em; 
-            text-transform: uppercase; 
-        }
-        
-        .elegant-cta {
+            letter-spacing: 2px; 
+            border: 1px solid #333; 
+            padding: 16px 32px; 
+            transition: 0.4s ease;
             display: inline-block;
-            margin-top: 80px;
-            padding: 20px 50px;
-            color: #D4AF37;
-            text-decoration: none;
-            font-family: Jost, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            font-size: 0.9rem;
-            border: 1px solid #D4AF37;
-            border-radius: 2px;
+            text-align: center;
+        }
+        .nav-btn:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
+
+        /* Highlighted Primary CTA */
+        .nav-btn.primary {
+            background: var(--accent-gold);
+            color: var(--deep-bg);
+            border-color: var(--accent-gold);
+            font-weight: 700;
+        }
+        .nav-btn.primary:hover {
             background: transparent;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
+            color: var(--accent-gold);
         }
-        
-        .elegant-cta:hover {
-            background: #D4AF37;
-            color: #050505;
-            box-shadow: 0 0 30px rgba(212,175,55,0.2);
-            transform: translateY(-2px);
-        }
-        
-        .cta-wrapper { 
-            text-align: center; 
-            margin-bottom: 60px; 
+
+        @media (max-width: 1024px) {
+            .pillar-section, .pillar-section.reverse { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+            .footer-nav { flex-direction: column; align-items: center; }
+            .nav-btn { width: 80%; }
         }
     </style>
 </head>
 <body>
-    <a href=index.html class=back-nav>Back to Home</a>
 
-    <div class=container>
-        <h1>The Biological Imperative</h1>
-        
-        <p>Your physical form does not process ambient light merely to construct a visual representation of the world. It utilizes specific wavelengths as profound chemical signals to calibrate your internal biological chronometer. When you bathe under high-intensity standard white light-emitting diodes late in the evening, you inadvertently send a biochemical midday signal to your central nervous system at a time when it should be initiating cellular repair.</p>
+<section class="hero-banner">
+    <div class="hero-sub">The Biological Protocol</div>
+    <h1>The Four Anchors</h1>
+</section>
 
-        <h2>I. The Photoreceptor Pathway</h2>
-        <p>Embedded deep within the inner layer of your retina exists a highly specialized non-image-forming class of photoreceptors known as intrinsically photosensitive Retinal Ganglion Cells. These unique structures bypass the visual cortex entirely. Their singular evolutionary purpose is to monitor environmental irradiance and directly alert the Suprachiasmatic Nucleus, which functions as the master pacemaker of the human brain.</p>
-        
-        <div class=diagram-container>
-            <img src=diagram.png alt=Eye-to-Brain-Pathway>
-            <div class=diagram-caption>Figure 1: The direct neural pathway from retinal ganglion cells to the master clock</div>
+<div class="container">
+
+    <section class="pillar-section">
+        <div class="content">
+            <h2>Pillar I: Photic <small>Suprachiasmatic Nucleus Alignment</small></h2>
+            <p>Our approach utilizes high-purity 670nm crimson light to bypass the melanopsin-driven wakefulness response, allowing for natural melatonin secretion.</p>
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3499892/" class="sci-link">REF: Red Light (2012)</a>
         </div>
-
-        <p>These specialized ganglion cells possess a unique photopigment called melanopsin. Melanopsin is highly reactive to short-wavelength visible light, specifically peaking at the four hundred and eighty nanometer mark, which registers as blue. The instant these cells detect blue-spectrum frequencies, they forcefully suppress the pineal gland, halting the secretion of sleep-inducing hormones.</p>
-
-        <div class=highlight-box>
-            Clinical studies demonstrate that melanopsin activation creates an immediate cessation of melatonin production. The hormonal suppression persists long after the light source is removed, severely delaying the onset of restorative deep sleep phases.
+        <div class="diagram-box">
+            <img src="photic-anchor-iris-670nm.png" alt="Clinical Iris Detail">
+            <div class="caption">Fig. 1.1 // Photic Interface</div>
         </div>
-        
-        <a href=https://pmc.ncbi.nlm.nih.gov/articles/PMC7065627/ class=source-link target=_blank>Source: PMC — The Inner Clock and Blue Light</a>
+    </section>
 
-        <h2>II. The Suprachiasmatic Nucleus</h2>
-        <p>Located directly above the optic chiasm in the hypothalamus, the Suprachiasmatic Nucleus is the central command center for your entire circadian rhythm. It dictates not only sleep and wakefulness but also core body temperature, hormone release rhythms, and digestive metabolic functions.</p>
-        
-        <p>By controlling your light exposure in the ninety minutes preceding sleep, you are directly hacking this command center. You are providing the precise environmental data the Suprachiasmatic Nucleus requires to signal the parasympathetic nervous system that the day has concluded.</p>
-
-        <h2>III. The 670nm Advantage</h2>
-        <p>Extensive dermatological and neurological research confirms that long-wavelength red illumination, specifically peaking around six hundred and seventy nanometers, is effectively invisible to the melanopsin receptors in your eyes. This creates a functional state of biological darkness.</p>
-        
-        <p>By transitioning your evening routine to this specific red spectrum, you preserve enough visual acuity to navigate your environment safely without triggering the daytime hormonal alert cascade. Your brain behaves exactly as if you were standing in a pitch-black room.</p>
-        
-        <div class=highlight-box>
-            Researchers observing subjects under red illumination noted a robust recovery of natural melatonin curves, standing in stark contrast to the total suppression caused by standard blue-enriched domestic lighting.
+    <section class="pillar-section reverse">
+        <div class="diagram-box">
+            <img src="olfactory-terpene-gaba-modulation.png" alt="Linalool GABA Modulation">
+            <div class="caption">Fig. 2.1 // Olfactory Integration</div>
         </div>
-        
-        <a href=https://pmc.ncbi.nlm.nih.gov/articles/PMC12113466/ class=source-link target=_blank>Source: PMC — Comparative Effects of Red and Blue LED Light</a>
-
-        <h2>IV. Parasympathetic Activation</h2>
-        <p>The dark shower serves as a profound sensory isolation protocol. By systematically eliminating high-frequency visual noise, you force the central nervous system to exit the sympathetic fight-or-flight stress state.</p>
-        
-        <p>As you stand in the warm water, the physical sensation combined with the auditory resonance of low-frequency soundscapes triggers the vagus nerve. This massive neural network runs from your brainstem to your abdomen, and its activation rapidly lowers your resting heart rate and clears circulating cortisol from your bloodstream.</p>
-
-        <h2>V. The Thermal Drop Trigger</h2>
-        <p>Finally, the transition out of the warm water creates an essential biological catalyst. As moisture evaporates from your skin in the dimly lit environment, your core body temperature experiences a micro-drop. The Suprachiasmatic Nucleus interprets this specific thermal decline as the ultimate physiological signal to initiate the sleep sequence.</p>
-
-        <div class=cta-wrapper>
-            <a href=guide.html class=elegant-cta>Enter The Protocol</a>
+        <div class="content">
+            <h2>Pillar II: Olfactory <small>Limbic System Integration</small></h2>
+            <p>Linalool and Alpha-Santalol modulate the limbic brain to trigger an immediate parasympathetic response, reinforcing the light's signal.</p>
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12904233/" class="sci-link">REF: Linalool Efficacy</a>
         </div>
-    </div>
+    </section>
+
+    <section class="pillar-section">
+        <div class="content">
+            <h2>Pillar III: Metabolic <small>Chronobiotic Foundation</small></h2>
+            <p>We utilize Magnesium Bisglycinate and high-fidelity Tart Cherry extract to provide the metabolic certainty required for a unified circadian reset.</p>
+            <a href="https://www.dovepress.com/article/download/106355" class="sci-link">REF: Magnesium Trial</a>
+        </div>
+        <div class="diagram-box">
+            <img src="metabolic-anchor-magnesium-cycle.png" alt="Magnesium Cellular Flux">
+            <div class="caption">Fig. 3.1 // Metabolic Oscillation</div>
+        </div>
+    </section>
+
+    <section class="pillar-section reverse">
+        <div class="diagram-box">
+            <img src="auditory-anchor-vagus-tone.png" alt="Auditory Brainstem Integration">
+            <div class="caption">Fig. 4.1 // Vagal Tone Optimization</div>
+        </div>
+        <div class="content">
+            <h2>Pillar IV: Auditory <small>Autonomic System Reset</small></h2>
+            <p>Targeted Gamma and Alpha frequencies stimulate the vagus nerve (CN X) to optimize HRV and maximize mitochondrial repair.</p>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/30346317/" class="sci-link">REF: Gamma Frequency Data</a>
+        </div>
+    </section>
+
+    <nav class="footer-nav">
+        <a href="index.html" class="nav-btn">Return Home</a>
+        <a href="protocol.html" class="nav-btn primary">Enter The Protocol</a>
+        <a href="shop.html" class="nav-btn">Shop Essentials</a>
+    </nav>
+
+</div>
 </body>
 </html>
