@@ -11,162 +11,46 @@
             margin: 0; 
             padding: 0; 
             background: #050505; 
-            background-image: url(image_8df295.PNG);
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-image: url(image_8df295.PNG); 
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed; 
             color: #ffffff; 
             font-family: Inter, sans-serif; 
             line-height: 1.7; 
-            -webkit-font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased; 
         }
         
-        .overlay { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: rgba(5,5,5,0.85); 
-            z-index: 1; 
-            pointer-events: none; 
-        }
-
-        .container { 
-            position: relative; 
-            z-index: 10; 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            padding: 100px 20px 60px 20px; 
-        }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5,5,5,0.85); z-index: 1; pointer-events: none; }
+        .container { position: relative; z-index: 10; max-width: 1000px; margin: 0 auto; padding: 100px 20px 60px 20px; }
         
-        h1 { 
-            font-family: Jost, sans-serif; 
-            text-transform: uppercase; 
-            letter-spacing: 0.2em; 
-            text-align: center; 
-            color: #D4AF37; 
-            font-size: 2.5rem; 
-            margin-bottom: 10px; 
-        }
-
-        .intro { 
-            text-align: center; 
-            color: #cccccc; 
-            font-weight: 300; 
-            margin-bottom: 70px; 
-            font-size: 1.1rem; 
-            max-width: 600px; 
-            margin-left: auto; 
-            margin-right: auto; 
-        }
+        h1 { font-family: Jost, sans-serif; text-transform: uppercase; letter-spacing: 0.2em; text-align: center; color: #D4AF37; font-size: 2.5rem; margin-bottom: 10px; }
+        h2.section-title { font-family: Jost, sans-serif; text-transform: uppercase; letter-spacing: 0.2em; color: #ffffff; font-size: 1.8rem; margin-top: 80px; margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
+        .intro { text-align: center; color: #cccccc; font-weight: 300; margin-bottom: 70px; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
         
-        .blog-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 30px; 
-            margin-bottom: 60px; 
-        }
-
-        .blog-card { 
-            background: rgba(8, 8, 8, 0.6); 
-            border: 1px solid rgba(255, 255, 255, 0.05); 
-            backdrop-filter: blur(10px); 
-            padding: 40px 30px; 
-            display: flex; 
-            flex-direction: column; 
-            transition: all 0.4s ease; 
-        }
-
-        .blog-card:hover { 
-            border-color: rgba(212, 175, 55, 0.4); 
-            transform: translateY(-5px); 
-            background: rgba(15, 15, 15, 0.8); 
-        }
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .blog-card { background: rgba(8, 8, 8, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); padding: 40px 30px; display: flex; flex-direction: column; transition: all 0.4s ease; }
+        .blog-card:hover { border-color: rgba(212, 175, 55, 0.4); transform: translateY(-5px); background: rgba(15, 15, 15, 0.8); }
         
-        .blog-category { 
-            font-family: Jost, sans-serif; 
-            font-size: 0.7rem; 
-            text-transform: uppercase; 
-            letter-spacing: 0.2em; 
-            color: #888; 
-            margin-bottom: 15px; 
-        }
-
-        .blog-title { 
-            font-family: Jost, sans-serif; 
-            font-size: 1.4rem; 
-            color: #ffffff; 
-            margin: 0 0 15px 0; 
-            font-weight: 400; 
-            letter-spacing: 0.05em; 
-            line-height: 1.3; 
-        }
-
-        .blog-excerpt { 
-            font-size: 0.95rem; 
-            color: #aaaaaa; 
-            margin-bottom: 30px; 
-            font-weight: 300; 
-            flex-grow: 1; 
-        }
+        .blog-category { font-family: Jost, sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: #888; margin-bottom: 15px; }
+        .blog-title { font-family: Jost, sans-serif; font-size: 1.4rem; color: #ffffff; margin: 0 0 15px 0; font-weight: 400; letter-spacing: 0.05em; line-height: 1.3; }
+        .blog-excerpt { font-size: 0.95rem; color: #aaaaaa; margin-bottom: 30px; font-weight: 300; flex-grow: 1; }
         
-        .read-btn { 
-            display: inline-block; 
-            color: #D4AF37; 
-            text-decoration: none; 
-            text-transform: uppercase; 
-            letter-spacing: 0.15em; 
-            font-family: Jost, sans-serif; 
-            font-size: 0.75rem; 
-            border-bottom: 1px solid transparent; 
-            transition: 0.3s; 
-            align-self: flex-start; 
-        }
+        .read-btn { display: inline-block; color: #D4AF37; text-decoration: none; text-transform: uppercase; letter-spacing: 0.15em; font-family: Jost, sans-serif; font-size: 0.75rem; border-bottom: 1px solid transparent; transition: 0.3s; align-self: flex-start; }
+        .read-btn:hover { border-bottom: 1px solid #D4AF37; color: #ffffff; }
 
-        .read-btn:hover { 
-            border-bottom: 1px solid #D4AF37; 
-            color: #ffffff; 
-        }
-
-        .footer-nav { 
-            margin-top: 80px; 
-            padding-top: 50px; 
-            border-top: 1px solid rgba(255,255,255,0.1); 
-            display: flex; 
-            justify-content: center; 
-            gap: 20px; 
-            flex-wrap: wrap; 
-        }
-
-        .nav-btn { 
-            text-decoration: none; 
-            color: #ffffff; 
-            font-family: Jost, sans-serif; 
-            font-size: 0.8rem; 
-            text-transform: uppercase; 
-            letter-spacing: 0.15em; 
-            border: 1px solid rgba(255,255,255,0.3); 
-            padding: 16px 32px; 
-            transition: 0.4s ease; 
-            background: rgba(0,0,0,0.5); 
-            border-radius: 4px; 
-        }
-
-        .nav-btn:hover { 
-            border-color: #D4AF37; 
-            background: rgba(212,175,55,0.05); 
-            transform: translateY(-3px); 
-            color: #D4AF37; 
-        }
+        .footer-nav { margin-top: 80px; padding-top: 50px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .nav-btn { text-decoration: none; color: #ffffff; font-family: Jost, sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; border: 1px solid rgba(255,255,255,0.3); padding: 16px 32px; transition: 0.4s ease; background: rgba(0,0,0,0.5); border-radius: 4px; }
+        .nav-btn:hover { border-color: #D4AF37; background: rgba(212,175,55,0.05); transform: translateY(-3px); color: #D4AF37; }
     </style>
 </head>
 <body>
     <div class=overlay></div>
     <div class=container>
         <h1>The Dark Blog</h1>
-        <p class=intro>Clinical insights and physiological breakdowns detailing the science behind the four biological anchors.</p>
+        <p class=intro>Clinical insights, physiological breakdowns, and the mainstream awakening to the Circadian Architecture protocol.</p>
         
+        <h2 class=section-title>Clinical Foundations</h2>
         <div class=blog-grid>
             <div class=blog-card>
                 <div class=blog-category>Core Protocol</div>
@@ -215,6 +99,58 @@
                 <h2 class=blog-title>The Microbiome Clock</h2>
                 <p class=blog-excerpt>Dive into the connection between your digestive bacteria and your master clock, and learn how fermented foods can anchor your peripheral rhythms.</p>
                 <a href=article7.html class=read-btn>Read Article</a>
+            </div>
+        </div>
+
+        <h2 class=section-title>The Movement in the Press</h2>
+        <div class=blog-grid>
+            <div class=blog-card>
+                <div class=blog-category>Psychology Focus</div>
+                <h2 class=blog-title>Dark Showering for Better Sleep</h2>
+                <p class=blog-excerpt>Clinical psychologist Dr. Julie Kolzet outlines the science behind our tactical retreat from the overstimulation of the commercial world.</p>
+                <a href=article8.html class=read-btn>Read Article</a>
+            </div>
+            
+            <div class=blog-card>
+                <div class=blog-category>The Optimist Daily</div>
+                <h2 class=blog-title>Experts Explain the Bedtime Trend</h2>
+                <p class=blog-excerpt>Neuroscientist Dr. Chelsie Rohrscheib breaks down how forcing a core temperature drop helps us escape the modern cycle of synthetic light.</p>
+                <a href=article9.html class=read-btn>Read Article</a>
+            </div>
+            
+            <div class=blog-card>
+                <div class=blog-category>Healthline Feature</div>
+                <h2 class=blog-title>The Mechanisms of Dark Showering</h2>
+                <p class=blog-excerpt>Healthline confirms that stripping away synthetic illumination is not about simple relaxation; it is a required biological intervention to reclaim our evenings.</p>
+                <a href=article10.html class=read-btn>Read Article</a>
+            </div>
+            
+            <div class=blog-card>
+                <div class=blog-category>Time Magazine Spotlight</div>
+                <h2 class=blog-title>Benefits for Sleep and Anxiety</h2>
+                <p class=blog-excerpt>A massive mainstream victory. Time Magazine highlights how our movement reclaims natural rhythms from the grip of commercial overstimulation.</p>
+                <a href=article11.html class=read-btn>Read Article</a>
+            </div>
+            
+            <div class=blog-card>
+                <div class=blog-category>Amerisleep Report</div>
+                <h2 class=blog-title>Turning Off the Lights for Better Sleep</h2>
+                <p class=blog-excerpt>The sleep industry acknowledges our protocol as an impenetrable boundary against the artificial stressors designed to keep our attention hooked.</p>
+                <a href=article12.html class=read-btn>Read Article</a>
+            </div>
+            
+            <div class=blog-card>
+                <div class=blog-category>LivingEtc Experience</div>
+                <h2 class=blog-title>The Secret to Better Sleep</h2>
+                <p class=blog-excerpt>A personal account detailing the profound sensory reset that occurs when you reject artificial noise and rediscover the restorative power of your own biology.</p>
+                <a href=article13.html class=read-btn>Read Article</a>
+            </div>
+            
+            <div class=blog-card>
+                <div class=blog-category>House Digest</div>
+                <h2 class=blog-title>A Trend That Promotes Better Health</h2>
+                <p class=blog-excerpt>Recognizing the dark shower protocol as a deliberate, nightly rejection of the commercial forces that hijack our modern homes.</p>
+                <a href=article14.html class=read-btn>Read Article</a>
             </div>
         </div>
 
