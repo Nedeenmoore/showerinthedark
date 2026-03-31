@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content=width=device-width,initial-scale=1>
+    <title>Adenosine Pressure Tracker | Circadian Architecture</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400;600&display=swap);
+        body { margin: 0; padding: 0; background: #050505; background-image: url(image_8df295.PNG); background-size: cover; background-position: center; background-attachment: fixed; color: #ffffff; font-family: Inter, sans-serif; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5,5,5,0.85); z-index: 1; pointer-events: none; }
+        .container { position: relative; z-index: 10; max-width: 800px; margin: 0 auto; padding: 100px 20px 60px 20px; }
+        h1 { font-family: Jost, sans-serif; text-transform: uppercase; letter-spacing: 0.2em; color: #D4AF37; font-size: 2.2rem; margin-bottom: 10px; text-align: center; }
+        .intro { text-align: center; color: #cccccc; font-weight: 300; margin-bottom: 50px; font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        
+        .calculator-card { background: rgba(8, 8, 8, 0.6); border: 1px solid rgba(212, 175, 55, 0.3); backdrop-filter: blur(10px); padding: 40px; border-radius: 4px; }
+        .input-group { margin-bottom: 25px; text-align: left; }
+        label { display: block; font-family: Jost, sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: #D4AF37; margin-bottom: 15px; }
+        input[type=time], select { width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); color: #ffffff; padding: 15px; border-radius: 4px; font-family: Inter, sans-serif; font-size: 1.2rem; box-sizing: border-box; outline: none; text-align: center; }
+        
+        .calc-btn { display: inline-block; width: 100%; padding: 18px; background: rgba(212, 175, 55, 0.15); border: 1px solid #D4AF37; color: #D4AF37; font-family: Jost, sans-serif; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.9rem; cursor: pointer; transition: 0.4s; border-radius: 4px; margin-top: 10px; }
+        .calc-btn:hover { background: #D4AF37; color: #000; }
+
+        #results { display: none; margin-top: 50px; text-align: left; }
+        
+        .pressure-gauge { height: 20px; width: 100%; background: rgba(255,255,255,0.05); border-radius: 10px; margin: 20px 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+        .pressure-fill { height: 100%; background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); width: 0%; transition: 2s ease-out; }
+        
+        .status-header { font-family: Jost, sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.2em; color: #D4AF37; margin-bottom: 10px; }
+        .status-msg { font-size: 1.1rem; color: #ffffff; font-weight: 300; margin-bottom: 30px; line-height: 1.6; }
+
+        .footer-nav { margin-top: 60px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .nav-btn { text-decoration: none; color: #ffffff; font-family: Jost, sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; border: 1px solid rgba(255,255,255,0.3); padding: 12px 24px; transition: 0.4s ease; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class=overlay></div>
+    <div class=container>
+        <h1>Adenosine Tracker</h1>
+        <p class=intro>Visualize your biological sleep drive. Track the accumulation of cellular debt and identify your optimal protocol window.</p>
+        
+        <div class=calculator-card>
+            <div class=input-group>
+                <label>Time of Awakening</label>
+                <input type=time id=wake-time value=07:00>
+            </div>
+            
+            <div class=input-group>
+                <label>Did you nap today?</label>
+                <select id=nap>
+                    <option value=0>No Nap</option>
+                    <option value=30>Short Nap (20-30m)</option>
+                    <option value=90>Full Cycle (90m)</option>
+                </select>
+            </div>
+
+            <button class=calc-btn id=track-pressure>Calculate Sleep Pressure</button>
+
+            <div id=results>
+                <div class=status-header>Current Biological Debt</div>
+                <div class=pressure-gauge><div id=fill class=pressure-fill></div></div>
+                
+                <div id=msg class=status-msg></div>
+            </div>
+        </div>
+
+        <nav class=footer-nav>
+            <a href=index.html class=nav-btn>Home</a>
+            <a href=tools.html class=nav-btn>All Tools</a>
+            <a href=lux.html class=nav-btn>Lux Estimator</a>
+        </nav>
+    </div>
+
+    <script>
+        document.getElementById("track-pressure").addEventListener("click", function() {
+            const wakeVal = document.getElementById("wake-time").value;
+            const napVal = parseInt(document.getElementById("nap").value);
+            
+            const [hours, minutes] = wakeVal.split(":").map(Number);
+            const wakeDate = new Date();
+            wakeDate.setHours(hours, minutes, 0);
+            
+            const now = new Date();
+            let diffHours = (now - wakeDate) / (1000 * 60 * 60);
+            
+            // Adjust for napping (reduces pressure)
+            diffHours = diffHours - (napVal / 60);
+            
+            // Max pressure reached at 16 hours awake
+            let percentage = (diffHours / 16) * 100;
+            if (percentage > 100) percentage = 100;
+            if (percentage < 0) percentage = 0;
+
+            const fill = document.getElementById("fill");
+            const msg = document.getElementById("msg");
+            
+            fill.style.width = percentage + "%";
+            
+            if (percentage < 40) {
+                fill.style.background = "linear-gradient(to right, #4facfe, #00f2fe)";
+                msg.innerHTML = "<strong>Light Pressure:</strong> Your adenosine levels are insufficient for deep sleep onset. Executing the protocol now would be premature. Focus on physical activity to build debt.";
+            } else if (percentage < 80) {
+                fill.style.background = "linear-gradient(to right, #f6d365, #fda085)";
+                msg.innerHTML = "<strong>Building Pressure:</strong> The biological window is opening. Begin environmental dimming. Your brain is starting to prioritize restoration over alertness.";
+            } else {
+                fill.style.background = "linear-gradient(to right, #ff0844, #ffb199)";
+                msg.innerHTML = "<strong>CRITICAL PRESSURE:</strong> You have reached the biological point of no return. Your adenosine receptors are fully saturated. Initiate the <strong>Dark Shower Protocol</strong> immediately to capture this wave.";
+            }
+            
+            document.getElementById("results").style.display = "block";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content=width=device-width,initial-scale=1>
+    <title>Melanopic Lux Estimator | Circadian Architecture</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400;600&display=swap);
+        body { margin: 0; padding: 0; background: #050505; background-image: url(image_8df295.PNG); background-size: cover; background-position: center; background-attachment: fixed; color: #ffffff; font-family: Inter, sans-serif; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5,5,5,0.85); z-index: 1; pointer-events: none; }
+        .container { position: relative; z-index: 10; max-width: 800px; margin: 0 auto; padding: 100px 20px 60px 20px; }
+        h1 { font-family: Jost, sans-serif; text-transform: uppercase; letter-spacing: 0.2em; color: #D4AF37; font-size: 2.2rem; margin-bottom: 10px; text-align: center; }
+        .intro { text-align: center; color: #cccccc; font-weight: 300; margin-bottom: 50px; font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        
+        .calculator-card { background: rgba(8, 8, 8, 0.6); border: 1px solid rgba(212, 175, 55, 0.3); backdrop-filter: blur(10px); padding: 40px; border-radius: 4px; }
+        .input-group { margin-bottom: 25px; text-align: left; }
+        label { display: block; font-family: Jost, sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: #D4AF37; margin-bottom: 10px; }
+        select, input { width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); color: #ffffff; padding: 15px; border-radius: 4px; font-family: Inter, sans-serif; font-size: 1rem; box-sizing: border-box; outline: none; }
+        
+        .calc-btn { display: inline-block; width: 100%; padding: 18px; background: rgba(212, 175, 55, 0.15); border: 1px solid #D4AF37; color: #D4AF37; font-family: Jost, sans-serif; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.9rem; cursor: pointer; transition: 0.4s; border-radius: 4px; margin-top: 10px; }
+        .calc-btn:hover { background: #D4AF37; color: #000; }
+
+        #lux-results { display: none; margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .lux-value { font-family: Jost, sans-serif; font-size: 3.5rem; color: #ffffff; line-height: 1; margin-bottom: 10px; }
+        .lux-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; color: #D4AF37; margin-bottom: 25px; display: block; }
+        
+        .rating-box { padding: 20px; border-radius: 4px; font-size: 0.9rem; text-align: left; line-height: 1.6; }
+        .danger { background: rgba(255, 0, 0, 0.1); border: 1px solid rgba(255, 0, 0, 0.3); color: #ffbaba; }
+        .safe { background: rgba(0, 255, 0, 0.1); border: 1px solid rgba(0, 255, 0, 0.3); color: #baffba; }
+
+        .footer-nav { margin-top: 60px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .nav-btn { text-decoration: none; color: #ffffff; font-family: Jost, sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; border: 1px solid rgba(255,255,255,0.3); padding: 12px 24px; transition: 0.4s ease; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class=overlay></div>
+    <div class=container>
+        <h1>Spectral Density</h1>
+        <p class=intro>Estimate the biological impact of your environment. Calculate your Melanopic Lux exposure based on spectral power and proximity.</p>
+        
+        <div class=calculator-card>
+            <div class=input-group>
+                <label>Light Source Type</label>
+                <select id=source>
+                    <option value=0.9>Standard Smartphone (100% Brightness)</option>
+                    <option value=0.5>Standard Smartphone (Night Shift Active)</option>
+                    <option value=0.8>Cool White LED (6000K)</option>
+                    <option value=0.4>Warm White LED (2700K)</option>
+                    <option value=0.1>True Amber LED (1800K)</option>
+                    <option value=0.01>Clinical Red LED (670nm)</option>
+                    <option value=0.02>Candlelight</option>
+                </select>
+            </div>
+            
+            <div class=input-group>
+                <label>Distance from Source (In Meters)</label>
+                <input type=number id=distance value=0.5 step=0.1 min=0.1>
+            </div>
+
+            <button class=calc-btn id=calc-lux>Analyze Photic Impact</button>
+
+            <div id=lux-results>
+                <div class=lux-value id=lux-out>0</div>
+                <span class=lux-label>Estimated Melanopic Lux</span>
+                <div id=rating-box class=rating-box></div>
+            </div>
+        </div>
+
+        <nav class=footer-nav>
+            <a href=index.html class=nav-btn>Home</a>
+            <a href=tools.html class=nav-btn>All Tools</a>
+            <a href=resonance.html class=nav-btn>Vagal Resonance</a>
+        </nav>
+    </div>
+
+    <script>
+        document.getElementById("calc-lux").addEventListener("click", function() {
+            const ratio = parseFloat(document.getElementById("source").value);
+            const dist = parseFloat(document.getElementById("distance").value);
+            
+            // Simplified Inverse Square Law + Spectral Weighting
+            // Base flux of a standard bulb is roughly 800 lumens
+            // Result is a relative estimation of m-EDI (Melanopic Equivalent Daylight Illuminance)
+            const baseIntensity = 150; 
+            const estimatedLux = (baseIntensity * ratio) / (dist * dist);
+            const finalVal = Math.round(estimatedLux * 100) / 100;
+
+            document.getElementById("lux-out").innerText = finalVal;
+            const rating = document.getElementById("rating-box");
+            
+            if (finalVal > 1) {
+                rating.className = "rating-box danger";
+                rating.innerHTML = "<strong>CRITICAL DISRUPTION:</strong> This level of melanopic lux is sufficient to aggressively suppress melatonin and delay your master clock. Disconnect immediately to protect your architecture.";
+            } else {
+                rating.className = "rating-box safe";
+                rating.innerHTML = "<strong>BIOLOGICAL DARKNESS:</strong> Your current exposure is below the threshold of circadian activation. This environment is safe for evening protocols.";
+            }
+            
+            document.getElementById("lux-results").style.display = "block";
+        });
+    </script>
+</body>
+</html>

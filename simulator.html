@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content=width=device-width,initial-scale=1>
+    <title>Impact Simulator | Circadian Architecture</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400;600&display=swap);
+        body { margin: 0; padding: 0; background: #050505; background-image: url(image_8df295.PNG); background-size: cover; background-position: center; background-attachment: fixed; color: #ffffff; font-family: Inter, sans-serif; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5,5,5,0.85); z-index: 1; pointer-events: none; }
+        .container { position: relative; z-index: 10; max-width: 800px; margin: 0 auto; padding: 100px 20px 60px 20px; }
+        h1 { font-family: Jost, sans-serif; text-transform: uppercase; letter-spacing: 0.2em; color: #D4AF37; font-size: 2.2rem; margin-bottom: 10px; text-align: center; }
+        .intro { text-align: center; color: #cccccc; font-weight: 300; margin-bottom: 50px; font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        
+        .calculator-card { background: rgba(8, 8, 8, 0.6); border: 1px solid rgba(212, 175, 55, 0.3); backdrop-filter: blur(10px); padding: 40px; border-radius: 4px; }
+        .toggles { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px; text-align: left; }
+        
+        .toggle-item { display: flex; align-items: center; gap: 15px; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: 0.3s; }
+        .toggle-item.active { border-color: #D4AF37; background: rgba(212,175,55,0.1); }
+        .checkbox { width: 18px; height: 18px; border: 1px solid #D4AF37; border-radius: 3px; position: relative; }
+        .toggle-item.active .checkbox::after { content: ""; position: absolute; width: 10px; height: 10px; background: #D4AF37; top: 3px; left: 3px; }
+        .toggle-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: #bbbbbb; }
+
+        #impact-results { display: none; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; }
+        .chart-container { margin-bottom: 40px; text-align: left; }
+        .chart-label { font-family: Jost, sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; color: #D4AF37; margin-bottom: 15px; display: block; }
+        
+        .bar-bg { height: 35px; width: 100%; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; position: relative; border: 1px solid rgba(255,255,255,0.1); }
+        .bar-fill { height: 100%; width: 100%; transition: 1s ease-in-out; display: flex; align-items: center; padding-left: 15px; font-size: 0.85rem; font-weight: 600; box-sizing: border-box; }
+        .deep-fill { background: linear-gradient(to right, #2c3e50, #4ca1af); }
+        .rem-fill { background: linear-gradient(to right, #6a11cb, #2575fc); }
+        
+        .summary-text { font-size: 0.95rem; color: #aaaaaa; line-height: 1.6; margin-top: 20px; text-align: left; }
+
+        .footer-nav { margin-top: 60px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .nav-btn { text-decoration: none; color: #ffffff; font-family: Jost, sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; border: 1px solid rgba(255,255,255,0.3); padding: 12px 24px; transition: 0.4s ease; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class=overlay></div>
+    <div class=container>
+        <h1>Impact Simulator</h1>
+        <p class=intro>Visualize the architectural cost of disruption. Select your evening variables to see the projected loss in core recovery phases.</p>
+        
+        <div class=calculator-card>
+            <div class=toggles>
+                <div class="toggle-item active" onclick="toggleItem(this, 15)">
+                    <div class=checkbox></div>
+                    <span class=toggle-label>Late Caffeine</span>
+                </div>
+                <div class="toggle-item" onclick="toggleItem(this, 25)">
+                    <div class=checkbox></div>
+                    <span class=toggle-label>Evening Alcohol</span>
+                </div>
+                <div class="toggle-item" onclick="toggleItem(this, 20)">
+                    <div class=checkbox></div>
+                    <span class=toggle-label>Blue Light (Phone)</span>
+                </div>
+                <div class="toggle-item" onclick="toggleItem(this, 10)">
+                    <div class=checkbox></div>
+                    <span class=toggle-label>Late Night Work</span>
+                </div>
+            </div>
+
+            <button class="calc-btn" onclick="simulate()">Run Simulation</button>
+
+            <div id=impact-results>
+                <div class=chart-container>
+                    <span class=chart-label>Projected Deep Sleep (N3)</span>
+                    <div class=bar-bg><div id=deep-bar class="bar-fill deep-fill">100%</div></div>
+                </div>
+                <div class=chart-container>
+                    <span class=chart-label>Projected REM Phase</span>
+                    <div class=bar-bg><div id=rem-bar class="bar-fill rem-fill">100%</div></div>
+                </div>
+                <p class=summary-text id=summary></p>
+            </div>
+        </div>
+
+        <nav class=footer-nav>
+            <a href=index.html class=nav-btn>Home</a>
+            <a href=tools.html class=nav-btn>All Tools</a>
+            <a href=pressure.html class=nav-btn>Pressure Tracker</a>
+        </nav>
+    </div>
+
+    <script>
+        function toggleItem(el) {
+            el.classList.toggle("active");
+        }
+
+        function simulate() {
+            let deepPenalty = 0;
+            let remPenalty = 0;
+            
+            const items = document.querySelectorAll(".toggle-item");
+            if (items[0].classList.contains("active")) { deepPenalty += 20; remPenalty += 10; }
+            if (items[1].classList.contains("active")) { deepPenalty += 10; remPenalty += 40; }
+            if (items[2].classList.contains("active")) { deepPenalty += 30; remPenalty += 15; }
+            if (items[3].classList.contains("active")) { deepPenalty += 15; remPenalty += 10; }
+
+            const finalDeep = Math.max(100 - deepPenalty, 20);
+            const finalRem = Math.max(100 - remPenalty, 15);
+
+            document.getElementById("deep-bar").style.width = finalDeep + "%";
+            document.getElementById("deep-bar").innerText = finalDeep + "% Capacity";
+            
+            document.getElementById("rem-bar").style.width = finalRem + "%";
+            document.getElementById("rem-bar").innerText = finalRem + "% Capacity";
+
+            const summary = document.getElementById("summary");
+            if (finalDeep + finalRem < 120) {
+                summary.innerHTML = "<strong>CRITICAL ARCHITECTURE FAILURE:</strong> Your current habits are fragmenting your sleep cycles. This leads to impaired glympathic clearance and cognitive decline. The <strong>Dark Shower Protocol</strong> is required to reset these anchors.";
+            } else {
+                summary.innerHTML = "<strong>MODERATE DISRUPTION:</strong> You are losing essential restorative time. Implementing the protocol will recover approximately 40 minutes of deep phase architecture.";
+            }
+
+            document.getElementById("impact-results").style.display = "block";
+        }
+    </script>
+</body>
+</html>

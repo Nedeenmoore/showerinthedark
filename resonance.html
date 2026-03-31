@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content=width=device-width,initial-scale=1>
+    <title>Vagal Chant | Circadian Architecture</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400;600&display=swap);
+        body { margin: 0; padding: 0; background: #050505; background-image: url(image_8df295.PNG); background-size: cover; background-position: center; background-attachment: fixed; color: #ffffff; font-family: Inter, sans-serif; line-height: 1.7; -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5,5,5,0.9); z-index: 1; pointer-events: none; }
+        .container { position: relative; z-index: 10; max-width: 600px; margin: auto; padding: 60px 20px; text-align: center; }
+        h1 { font-family: Jost, sans-serif; text-transform: uppercase; letter-spacing: 0.2em; color: #D4AF37; font-size: 1.8rem; margin-bottom: 60px; }
+        .pacer-container { width: 200px; height: 200px; margin: 0 auto 60px auto; display: flex; align-items: center; justify-content: center; }
+        .orb { width: 100px; height: 100px; background: radial-gradient(circle, #ff0000 0%, #800000 100%); border-radius: 50%; box-shadow: 0 0 30px rgba(255, 0, 0, 0.4); transition: transform 4s ease-in-out; opacity: 0.8; }
+        .orb.inhale { transform: scale(1.8); box-shadow: 0 0 60px rgba(255, 0, 0, 0.6); }
+        .controls { background: rgba(15, 15, 15, 0.6); border: 1px solid rgba(212, 175, 55, 0.2); padding: 30px; border-radius: 4px; backdrop-filter: blur(10px); }
+        .play-btn { display: inline-block; padding: 20px 50px; background: transparent; border: 1px solid #D4AF37; color: #D4AF37; font-family: Jost, sans-serif; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.9rem; cursor: pointer; transition: 0.4s; border-radius: 4px; width: 100%; }
+        .play-btn.active { background: #D4AF37; color: #000; font-weight: 600; }
+        .instruction { margin-top: 30px; font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 0.1em; }
+    </style>
+</head>
+<body>
+    <div class=overlay></div>
+    <div class=container>
+        <h1>Vagal Response Chant</h1>
+        <div class=pacer-container><div class=orb id=orb></div></div>
+        <div class=controls>
+            <button class=play-btn id=toggle-sound>Initialize Protocol</button>
+            <p class=instruction id=status-text>Tap to begin melodic resonance</p>
+        </div>
+    </div>
+    <script>
+        let audioCtx, osc, gainNode, filter, isPlaying = false, pacerInterval, sequenceInterval;
+        const orb = document.getElementById("orb"), btn = document.getElementById("toggle-sound"), status = document.getElementById("status-text");
+
+        // Authentic Deum Verum Sequence (Credo I)
+        // Transposed for deep chest vibration
+        const melody = [58, 65, 65, 65, 73, 65, 58, 65, 77, 73, 65, 58]; 
+        let noteIndex = 0;
+
+        function playNote() {
+            const freq = melody[noteIndex];
+            const now = audioCtx.currentTime;
+            osc.frequency.setTargetAtTime(freq, now, 0.2);
+            noteIndex = (noteIndex + 1) % melody.length;
+        }
+
+        btn.addEventListener("click", function() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === "suspended") audioCtx.resume();
+
+            if (isPlaying) {
+                gainNode.gain.setTargetAtTime(0, audioCtx.currentTime, 0.3);
+                setTimeout(() => { if(osc) osc.stop(); isPlaying = false; }, 500);
+                clearInterval(pacerInterval);
+                clearInterval(sequenceInterval);
+                orb.classList.remove("inhale");
+                btn.innerText = "Initialize Protocol";
+                btn.classList.remove("active");
+                status.innerText = "Protocol Suspended";
+            } else {
+                osc = audioCtx.createOscillator();
+                gainNode = audioCtx.createGain();
+                filter = audioCtx.createBiquadFilter();
+
+                osc.type = "triangle"; 
+                osc.frequency.setValueAtTime(melody[0], audioCtx.currentTime);
+
+                filter.type = "lowpass";
+                filter.frequency.setValueAtTime(250, audioCtx.currentTime);
+                filter.Q.setValueAtTime(1, audioCtx.currentTime);
+
+                gainNode.gain.setValueAtTime(0.01, audioCtx.currentTime);
+                
+                osc.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                osc.start();
+
+                let inhaling = true;
+                orb.classList.add("inhale");
+                gainNode.gain.setTargetAtTime(0.7, audioCtx.currentTime, 1.5);
+
+                sequenceInterval = setInterval(playNote, 1100);
+                pacerInterval = setInterval(() => {
+                    inhaling = !inhaling;
+                    orb.classList.toggle("inhale");
+                    const now = audioCtx.currentTime;
+                    if (inhaling) {
+                        gainNode.gain.setTargetAtTime(0.7, now, 1.5);
+                    } else {
+                        gainNode.gain.setTargetAtTime(0.1, now, 1.5);
+                    }
+                }, 4000);
+
+                btn.innerText = "Chant Active";
+                btn.classList.add("active");
+                status.innerText = "Resonance active. Hum with the tone.";
+                isPlaying = true;
+            }
+        });
+    </script>
+</body>
+</html>
