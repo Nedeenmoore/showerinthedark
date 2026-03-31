@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content=width=device-width,initial-scale=1>
+    <title>670nm Wavelength Comparison | Circadian Architecture</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Inter:wght@300;400;600&display=swap);
+        
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background: #050505; 
+            background-image: url(image_8df295.PNG);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff; 
+            font-family: Inter, sans-serif; 
+            line-height: 1.7; 
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5,5,5,0.85); z-index: 1; pointer-events: none; }
+        .container { position: relative; z-index: 10; max-width: 900px; margin: 0 auto; padding: 100px 20px 60px 20px; }
+        
+        h1 { font-family: Jost, sans-serif; text-transform: uppercase; letter-spacing: 0.2em; color: #D4AF37; font-size: 2.5rem; margin-bottom: 20px; text-align: center; }
+        .intro { text-align: center; color: #cccccc; font-weight: 300; margin-bottom: 60px; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+        
+        .data-section { background: rgba(8, 8, 8, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); padding: 40px; border-radius: 4px; margin-bottom: 40px; }
+        h2 { font-family: Jost, sans-serif; text-transform: uppercase; letter-spacing: 0.15em; color: #ffffff; font-size: 1.4rem; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        
+        table { width: 100%; border-collapse: collapse; margin-bottom: 30px; font-size: 0.95rem; }
+        th { text-align: left; font-family: Jost, sans-serif; text-transform: uppercase; letter-spacing: 0.1em; color: #D4AF37; padding: 15px; border-bottom: 2px solid rgba(212, 175, 55, 0.3); }
+        td { padding: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #bbbbbb; }
+        
+        .spectrum-bar { height: 12px; width: 100%; border-radius: 6px; margin: 10px 0; background: linear-gradient(to right, #0000ff, #00ff00, #ffff00, #ff8000, #ff0000, #800000); }
+        .marker { height: 20px; width: 4px; background: #ffffff; position: relative; top: -16px; margin-left: 92%; box-shadow: 0 0 10px #ff0000; }
+        
+        .clinical-note { font-size: 0.85rem; color: #888; font-style: italic; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; }
+
+        .footer-nav { margin-top: 80px; padding-top: 50px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .nav-btn { text-decoration: none; color: #ffffff; font-family: Jost, sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; border: 1px solid rgba(255,255,255,0.3); padding: 16px 32px; transition: 0.4s ease; background: rgba(0,0,0,0.5); border-radius: 4px; }
+        .nav-btn:hover { border-color: #D4AF37; background: rgba(212,175,55,0.05); transform: translateY(-3px); color: #D4AF37; }
+    </style>
+</head>
+<body>
+    <div class=overlay></div>
+    
+    <div class=container>
+        <h1>Spectral Comparison</h1>
+        <p class=intro>Quantitative analysis of evening light sources and their impact on melanopsin activation. Understand the threshold of biological darkness.</p>
+        
+        <div class=data-section>
+            <h2>Wavelength Matrix</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Source Type</th>
+                        <th>Peak Wavelength</th>
+                        <th>Melanopic Impact</th>
+                        <th>Circadian Safety</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Daylight (Morning)</td>
+                        <td>480nm (Blue)</td>
+                        <td>High (98%)</td>
+                        <td>None (Evening Disruption)</td>
+                    </tr>
+                    <tr>
+                        <td>Warm White LED</td>
+                        <td>450nm + 580nm</td>
+                        <td>High (65%)</td>
+                        <td>Critical Hazard</td>
+                    </tr>
+                    <tr>
+                        <td>Standard Amber LED</td>
+                        <td>590nm - 610nm</td>
+                        <td>Moderate (25%)</td>
+                        <td>Low (Signal Bleed)</td>
+                    </tr>
+                    <tr>
+                        <td>Smart Red Bulbs</td>
+                        <td>620nm (Broad)</td>
+                        <td>Low (12%)</td>
+                        <td>Marginal Stability</td>
+                    </tr>
+                    <tr>
+                        <td style=color:#D4AF37;font-weight:600>Protocol 670nm</td>
+                        <td style=color:#D4AF37;font-weight:600>670nm (Monochromatic)</td>
+                        <td style=color:#D4AF37;font-weight:600>Zero (0.1%)</td>
+                        <td style=color:#D4AF37;font-weight:600>Maximum Architecture</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>The Photobiological Target</h2>
+            <p style=font-size:0.95rem;color:#bbbbbb>Retinal melanopsin is most sensitive to wavelengths below 530nm. As we move deeper into the long-wave red spectrum, the activation energy required to trigger the wakefulness response drops significantly. At exactly 670 nanometers, we bypass the circadian receptors while maintaining the cone-cell visibility required for environmental safety.</p>
+            
+            <div class=spectrum-bar></div>
+            <div class=marker></div>
+            <p style=text-align:right;font-size:0.75rem;color:#D4AF37;letter-spacing:0.1em;margin-top:-5px>670nm TARGET</p>
+            
+            <p class=clinical-note>Note: This comparison assumes equal luminous flux across all sources. Data based on normalized spectral power distributions of common commercial light emitting diodes versus specialized monochromatic emitters.</p>
+        </div>
+
+        <nav class=footer-nav>
+            <a href=index.html class=nav-btn>Return to Home</a>
+            <a href=calculator.html class=nav-btn>Timing Calculator</a>
+            <a href=faq.html class=nav-btn>Protocol FAQ</a>
+            <a href=products.html class=nav-btn>Shop Essentials</a>
+        </nav>
+    </div>
+</body>
+</html>
