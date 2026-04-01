@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang=en>
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-25786X1M3D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-25786X1M3D');
+    </script>
+    
     <meta charset=UTF-8>
     <meta name=viewport content=width=device-width,initial-scale=1>
     <title>Shower in the Dark</title>
@@ -183,7 +191,7 @@
         </p>
 
         <div class=cta-container>
-            <a href=guide.html class=btn-highlight>Enter the Protocol</a>
+            <a href=guide.html class=btn-highlight onclick="gtag('event', 'ritual_start', { 'ritual_name': 'dark_shower' });">Enter the Protocol</a>
             
             <div class=btn-row>
                 <a href=science.html class=btn-secondary>The Science</a>

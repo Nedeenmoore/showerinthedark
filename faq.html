@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang=en>
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-25786X1M3D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-25786X1M3D');
+    </script>
+
     <meta charset=UTF-8>
     <meta name=viewport content=width=device-width,initial-scale=1>
     <title>Protocol FAQ | Circadian Architecture</title>
@@ -11,6 +19,7 @@
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
+      "name": "Shower in the Dark FAQ",
       "mainEntity": [
         {
           "@type": "Question",
@@ -98,48 +107,48 @@
         
         <div class=faq-category>Core Protocol Basics</div>
 
-        <div class=faq-item>
+        <div class=faq-item onclick="gtag('event', 'faq_interaction', { 'question': 'biological_purpose' });">
             <h2 class=faq-question>What is the biological purpose of showering in the dark?</h2>
             <p class=faq-answer><strong>The Dark Shower combines thermal regulation with light restriction to artificially induce dusk.</strong> It acts as an undeniable signal to your master clock (the SCN) that the day is over, aggressively shutting down stress pathways and forcing the production of natural sleep hormones like melatonin.</p>
         </div>
 
-        <div class=faq-item>
+        <div class=faq-item onclick="gtag('event', 'faq_interaction', { 'question': 'thermal_regulation' });">
             <h2 class=faq-question>How does a warm shower help you fall asleep faster?</h2>
             <p class=faq-answer><strong>Warm water facilitates sleep through distal vasodilation.</strong> By warming the skin, blood moves away from your core. When you exit the shower, that heat rapidly evaporates, creating a sharp drop in core body temperature. This thermal drop is a mandatory biological trigger for initiating deep sleep phases.</p>
         </div>
 
-        <div class=faq-item>
+        <div class=faq-item onclick="gtag('event', 'faq_interaction', { 'question': 'protocol_timing' });">
             <h2 class=faq-question>How soon before bed should I execute the protocol?</h2>
             <p class=faq-answer><strong>You should step into the shower approximately 45 to 60 minutes before your intended sleep time.</strong> This provides the exact window needed for your core body temperature to plunge post-shower, peaking your natural melatonin production precisely as your head hits the pillow.</p>
         </div>
         
         <div class=faq-category>Photic Safety & Red Light</div>
         
-        <div class=faq-item>
+        <div class=faq-item onclick="gtag('event', 'faq_interaction', { 'question': '670nm_safety' });">
             <h2 class=faq-question>Why is 670nm red light safe for sleep?</h2>
             <p class=faq-answer><strong>670nm red light is the biological equivalent of darkness.</strong> It falls outside the absorption spectrum of melanopsin, the photopigment in the eye responsible for suppressing melatonin. By utilizing true 670nm crimson light, your eyes have the visibility required to move safely while your brain remains in a nocturnal state.</p>
         </div>
         
-        <div class=faq-item>
+        <div class=faq-item onclick="gtag('event', 'faq_interaction', { 'question': 'smart_bulb_efficacy' });">
             <h2 class=faq-question>Can I use a standard color-changing smart bulb for the protocol?</h2>
             <p class=faq-answer><strong>No, commercial smart bulbs invariably bleed light across the blue and green spectrums.</strong> Retinal melanopsin receptors are extraordinarily sensitive to these short wavelengths, even when they appear red to the naked eye. Only high-purity, targeted 670nm light completely bypasses this wakefulness response.</p>
         </div>
 
         <div class=faq-category>Vagal Nerve & Auditory Pillars</div>
 
-        <div class=faq-item>
+        <div class=faq-item onclick="gtag('event', 'faq_interaction', { 'question': 'humming_cortisol' });">
             <h2 class=faq-question>Can humming in the shower lower cortisol levels?</h2>
             <p class=faq-answer><strong>Yes, humming stimulates the vagus nerve through somatic resonance.</strong> The physical vibration in your throat mechanically massages the vagus nerve, which increases heart rate variability (HRV) and shifts the body from a sympathetic stress state to a parasympathetic rest state.</p>
         </div>
 
-        <div class=faq-item>
+        <div class=faq-item onclick="gtag('event', 'faq_interaction', { 'question': 'frequency_purpose' });">
             <h2 class=faq-question>What is the purpose of Alpha and Gamma frequencies?</h2>
             <p class=faq-answer><strong>Alpha and Gamma waves are associated with deep relaxation and cognitive recovery.</strong> By broadcasting these specific frequencies into the acoustic chamber of your shower, we encourage the brain to entrain to slower, restorative rhythms, severing the neurological tether to daytime stress.</p>
         </div>
 
         <div class=faq-category>Daytime Synchronization</div>
 
-        <div class=faq-item>
+        <div class=faq-item onclick="gtag('event', 'faq_interaction', { 'question': 'morning_sun_curfew' });">
             <h2 class=faq-question>Why is morning sunlight mandatory for the evening protocol to work?</h2>
             <p class=faq-answer><strong>The human circadian rhythm requires high contrast to function.</strong> Without early morning sunlight to sharply spike cortisol and set the biological timer, the evening darkness loses its physiological impact. You must step into natural daylight within the first hour of waking to anchor your cycle.</p>
         </div>
@@ -151,10 +160,10 @@
         </div>
 
         <nav class=footer-nav>
-            <a href=index.html class=nav-btn>Return Home</a>
-            <a href=guide.html class=nav-btn>The Protocol</a>
-            <a href=chant.html class=nav-btn>Chant Resources</a>
-            <a href=contact.html class=nav-btn>Contact</a>
+            <a href=index.html class=nav-btn onclick="gtag('event', 'nav_click', { 'target': 'home' });">Return Home</a>
+            <a href=guide.html class=nav-btn onclick="gtag('event', 'nav_click', { 'target': 'guide' });">The Protocol</a>
+            <a href=chant.html class=nav-btn onclick="gtag('event', 'nav_click', { 'target': 'chant' });">Chant Resources</a>
+            <a href=contact.html class=nav-btn onclick="gtag('event', 'nav_click', { 'target': 'contact' });">Contact</a>
         </nav>
     </div>
 </body>

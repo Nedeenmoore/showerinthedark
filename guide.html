@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang=en>
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-25786X1M3D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-25786X1M3D');
+    </script>
+
     <meta charset=UTF-8>
     <meta name=viewport content=width=device-width,initial-scale=1>
     <title>The Protocol | Shower in the Dark</title>
@@ -252,14 +260,14 @@
         <div class=step>
             <span class=step-num>01</span>
             <h2>The Blackout</h2>
-            <p>Ninety minutes before bed, disable all overhead white lights. Switch your bathroom vanity to the <a href=products.html#bulb class=highlight>670nm Red Bulb</a> and set your <a href=products.html#nightlight class=highlight>shower navigation lighting</a> to a dim red hue. This signals to your master clock that dusk has arrived.</p>
+            <p>Ninety minutes before bed, disable all overhead white lights. Switch your bathroom vanity to the <a href=products.html#bulb class=highlight onclick="gtag('event', 'step_click', { 'step_number': 1, 'target': 'red_bulb' });">670nm Red Bulb</a> and set your <a href=products.html#nightlight class=highlight onclick="gtag('event', 'step_click', { 'step_number': 1, 'target': 'nightlight' });">shower navigation lighting</a> to a dim red hue. This signals to your master clock that dusk has arrived.</p>
             <div class=science-tie>As established in Pillar I (Photic), this specific wavelength protects your master clock by bypassing the melanopsin-driven wakefulness response.</div>
         </div>
 
         <div class=step>
             <span class=step-num>02</span>
             <h2>The Sensory Prep</h2>
-            <p>When you are ready for sleep, start a warm flow of water in your darkened shower and place a <a href=products.html#steamer class=highlight>lavender steamer</a> on the shower floor out of the direct stream. Activate your <a href=products.html#speaker class=highlight>waterproof speaker</a> with a <a href=products.html#audio class=highlight>sleep-inducing piano track</a> or binaural frequencies. Allow the steam to build and fill the space with essential oils.</p>
+            <p>When you are ready for sleep, start a warm flow of water in your darkened shower and place a <a href=products.html#steamer class=highlight onclick="gtag('event', 'step_click', { 'step_number': 2, 'target': 'lavender_steamer' });">lavender steamer</a> on the shower floor out of the direct stream. Activate your <a href=products.html#speaker class=highlight onclick="gtag('event', 'step_click', { 'step_number': 2, 'target': 'speaker' });">waterproof speaker</a> with a <a href=products.html#audio class=highlight onclick="gtag('event', 'step_click', { 'step_number': 2, 'target': 'audio_tracks' });">sleep-inducing piano track</a> or binaural frequencies. Allow the steam to build and fill the space with essential oils.</p>
             <div class=science-tie>This engages Pillar II (Olfactory), utilizing botanical terpenes to modulate GABA receptors and signal a safe parasympathetic shift.</div>
         </div>
 
@@ -272,7 +280,7 @@
         <div class=step>
             <span class=step-num>04</span>
             <h2>The Supplement Stack*</h2>
-            <p>Prior to entering the shower, consider your nutritional support. Experts at the <a href=https://health.clevelandclinic.org/sleepy-girl-mocktail class=highlight target=_blank>Cleveland Clinic</a> recommend <a href=products.html#magnesium class=highlight>magnesium glycinate</a> as a primary choice for relaxing the central nervous system. When combined with <a href=products.html#cherry class=highlight>tart cherry</a>, a fruit clinically recognized for its high concentrations of natural melatonin, this stack acts as a powerful catalyst for your circadian transition.</p>
+            <p>Prior to entering the shower, consider your nutritional support. Experts at the <a href=https://health.clevelandclinic.org/sleepy-girl-mocktail class=highlight target=_blank onclick="gtag('event', 'external_resource', { 'source': 'cleveland_clinic' });">Cleveland Clinic</a> recommend <a href=products.html#magnesium class=highlight onclick="gtag('event', 'step_click', { 'step_number': 4, 'target': 'magnesium' });">magnesium glycinate</a> as a primary choice for relaxing the central nervous system. When combined with <a href=products.html#cherry class=highlight onclick="gtag('event', 'step_click', { 'step_number': 4, 'target': 'tart_cherry' });">tart cherry</a>, a fruit clinically recognized for its high concentrations of natural melatonin, this stack acts as a powerful catalyst for your circadian transition.</p>
             <div class=science-tie>This establishes the biochemical foundation outlined in Pillar III (Metabolic), supplying the cellular cofactors required for optimal sleep architecture.</div>
         </div>
 
@@ -302,13 +310,13 @@
         </div>
 
         <nav class=footer-nav>
-            <a href=index.html class=nav-btn>Return Home</a>
-            <a href=science.html class=nav-btn>Discover the Science</a>
-            <a href=products.html class=nav-btn-primary>Shop Essentials</a>
+            <a href=index.html class=nav-btn onclick="gtag('event', 'navigation', { 'to': 'home' });">Return Home</a>
+            <a href=science.html class=nav-btn onclick="gtag('event', 'navigation', { 'to': 'science' });">Discover the Science</a>
+            <a href=products.html class=nav-btn-primary onclick="gtag('event', 'navigation', { 'to': 'products' });">Shop Essentials</a>
         </nav>
         
         <div class=disclaimer-section>
-            <p>* Safety Notice: For the human circadian cycle, 670nm red light <a href=science.html class=highlight>acts as the biological equivalent of near-total darkness</a> because it does not trigger the eye receptors that suppress melatonin. Therefore, while a dimly lit room may enhance psychological relaxation, there is absolutely no need to dim your red lights beyond the level of illumination necessary to ensure complete physical safety as you navigate your bathroom and bedroom.</p>
+            <p>* Safety Notice: For the human circadian cycle, 670nm red light <a href=science.html class=highlight onclick="gtag('event', 'disclaimer_click', { 'type': 'safety' });">acts as the biological equivalent of near-total darkness</a> because it does not trigger the eye receptors that suppress melatonin. Therefore, while a dimly lit room may enhance psychological relaxation, there is absolutely no need to dim your red lights beyond the level of illumination necessary to ensure complete physical safety as you navigate your bathroom and bedroom.</p>
             <p>* Medical Disclaimer: The information provided regarding supplements and health routines is for educational and informational purposes only and do not constitute medical advice. Always consult with a qualified healthcare physician before adding new dietary supplements.</p>
         </div>
     </div>
